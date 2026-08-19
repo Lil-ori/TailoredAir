@@ -1,0 +1,13 @@
+<svg width="100%" viewBox="0 0 360 300" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Proudly Serving American Standard Products badge</title>
+  <desc>Blue badge with white text featuring the American Standard brand</desc>
+  <rect x="20" y="20" width="320" height="260" rx="4" fill="#0070c0" stroke="#0070c0" stroke-width="1"/>
+  <text x="180" y="52" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#ffffff" letter-spacing="0.18em">PROUDLY SERVING</text>
+  <line x1="30" y1="48" x2="75" y2="48" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+  <line x1="285" y1="48" x2="330" y2="48" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+  <text x="180" y="133" text-anchor="middle" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="72" fill="#ffffff">American</text>
+  <text x="180" y="200" text-anchor="middle" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="72" fill="#ffffff">Standard</text>
+  <text x="180" y="260" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#ffffff" letter-spacing="0.18em">PRODUCTS</text>
+  <line x1="30" y1="256" x2="75" y2="256" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+  <line x1="285" y1="256" x2="330" y2="256" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+</svg>
