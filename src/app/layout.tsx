@@ -1,5 +1,8 @@
+import { getSiteUrl } from "@/lib/site";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { SiteFooter, SiteNav } from "@/components/site-chrome";
+import { SiteUiProvider } from "@/components/site-ui";
 import "./site.css";
 
 const inter = Inter({
@@ -8,8 +11,14 @@ const inter = Inter({
   display: "swap",
 });
 
+const site = getSiteUrl();
+
 export const metadata: Metadata = {
-  title: "Tailored Air | Littleton HVAC Experts | Heating, Cooling & Air Quality",
+  metadataBase: new URL(site),
+  title: {
+    default: "Tailored Air | Littleton HVAC Experts | Heating, Cooling & Air Quality",
+    template: "%s | Tailored Air",
+  },
   description:
     "Tailored Air provides expert HVAC installation, repair & maintenance in Littleton, CO and the Denver Metro area. American Standard partner. 24/7 emergency service. Call (720) 296-6008.",
   keywords: [
@@ -23,14 +32,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Tailored Air LLC" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://tailoredair.com/" },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: "https://tailoredair.com/",
+    url: `${site}/`,
     title: "Tailored Air | Littleton HVAC Experts",
     description:
       "Expert HVAC installation, repair & maintenance in Littleton, CO and the Denver Metro area. American Standard partner. Call (720) 296-6008.",
-    images: ["https://tailoredair.com/wp-content/uploads/2024/06/tailored-air-logo-.png"],
+    images: [`${site}/images/logo.png`],
     locale: "en_US",
     siteName: "Tailored Air",
   },
@@ -39,7 +48,7 @@ export const metadata: Metadata = {
     title: "Tailored Air | Littleton HVAC Experts",
     description:
       "Expert HVAC installation, repair & maintenance in Littleton, CO. American Standard partner. 24/7 emergency service.",
-    images: ["https://tailoredair.com/wp-content/uploads/2024/06/tailored-air-logo-.png"],
+    images: [`${site}/images/logo.png`],
   },
   icons: {
     icon: "/favicon.png",
@@ -52,29 +61,19 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "HVACBusiness",
-      "@id": "https://tailoredair.com/#business",
+      "@id": `${site}/#business`,
       name: "Tailored Air",
       legalName: "Tailored Air LLC",
-      url: "https://tailoredair.com",
-      logo: "https://tailoredair.com/wp-content/uploads/2024/06/tailored-air-logo-.png",
+      url: site,
+      logo: `${site}/images/logo.png`,
       telephone: "+17202966008",
-      email: "info@tailoredair.com",
+      email: "hello@tailoredair.com",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Littleton",
         addressRegion: "CO",
         addressCountry: "US",
       },
-      areaServed: [
-        "Littleton",
-        "Englewood",
-        "Highlands Ranch",
-        "Lakewood",
-        "Ken Caryl",
-        "Centennial",
-        "Greenwood Village",
-        "Denver",
-      ],
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "5",
@@ -93,7 +92,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <SiteUiProvider>
+          <SiteNav />
+          {children}
+          <SiteFooter />
+        </SiteUiProvider>
       </body>
     </html>
   );

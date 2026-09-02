@@ -16,9 +16,27 @@ html,body{margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:var(--f);font-size:16px;line-height:1.65;overflow-x:hidden}
 
-/* NAV */
-nav{position:fixed;inset:0 0 auto;z-index:99;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(255,255,255,.12);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.15);transition:background .3s,border-color .3s,transform .35s ease}
-nav.on{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.2)}
+/* NAV — locked to original complex-v1 frost. Do not restyle. */
+nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.3s, border-color 0.3s, transform 0.35s ease;
+}
+
+/* Slightly more opaque when scrolled */
+nav.on {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.2);
+}
 .logo{font-family:var(--f);font-size:15px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--white);text-decoration:none}
 .nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;font-weight:500;transition:color .2s}
@@ -187,6 +205,9 @@ footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
 .form-group textarea{resize:vertical;min-height:80px}
 .form-submit{width:100%;padding:14px;background:#0075be;color:#fff;border:none;font-family:var(--f);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;margin-top:8px;transition:opacity .2s}
 .form-submit:hover{opacity:.85}
+.form-submit:disabled{opacity:.6;cursor:wait}
+.form-error{color:#f3b4a8;font-size:13px;line-height:1.5;margin:4px 0 8px}
+.hp{position:absolute;left:-9999px;height:0;width:0;opacity:0}
 
 /* ── RESPONSIVE / MOBILE ── */
 @media (max-width: 900px) {
@@ -326,10 +347,50 @@ footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
 .subpage-tab{font-family:var(--f);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;cursor:pointer;background:none;border-left:none;border-right:none;border-top:none}
 .subpage-tab:hover{color:var(--white)}
 .subpage-tab.active{color:var(--white);border-bottom-color:var(--green)}
-.subpage-content{display:none}
-.subpage-content.active{display:block}
+.subpage-content{display:block}
+.inner-page{padding-top:108px;min-height:70vh}
+.coming-soon{display:flex;align-items:center;justify-content:center;min-height:70vh;padding:60px 24px}
+.about-tabs{justify-content:center;position:relative;top:auto}
+.legal-link{color:rgba(255,255,255,.35);text-decoration:none;margin-left:12px}
+.legal-link:hover{color:rgba(255,255,255,.7)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.menu-btn{display:none;background:none;border:none;color:#fff;cursor:pointer;padding:4px;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.menu-btn span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px}
+.mobile-menu{display:flex;position:fixed;inset:0;background:rgba(12,12,12,.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-menu a,.mobile-menu button.btn-w{font-family:var(--f);font-size:20px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;text-decoration:none;background:none;border:none;cursor:pointer}
+.mobile-menu .mobile-phone{font-size:16px;color:rgba(255,255,255,.6);letter-spacing:0;text-transform:none}
+.mobile-menu .btn-w{font-size:13px;font-weight:700;letter-spacing:.1em;padding:14px 32px;background:#72b83e}
+.mobile-menu-close{position:absolute;top:20px;right:20px;background:none;border:none;color:#fff;font-size:24px;cursor:pointer}
+@media (max-width: 900px) {
+  .menu-btn,#menu-btn{display:flex !important}
+  .contact-grid{grid-template-columns:1fr 1fr !important}
+}
+@media (max-width: 600px) {
+  .inner-page{padding-top:92px}
+  .contact-grid{grid-template-columns:1fr !important}
+}
+
+/* LEGAL PAGES */
 .subpage-inner{padding:88px 48px}
 
+
+
+/* VALUES / SUIT */
+.values-lede{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin-top:12px;max-width:none;width:100%}
+.values-suit{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:56px;align-items:stretch}
+.values-suit-photo{position:relative;background:#f3f3f3;overflow:hidden;min-height:420px}
+.values-suit-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;display:block}
+.values-suit-list{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line)}
+.values-suit-item{background:var(--bg2);padding:28px 32px;transition:background .2s}
+.values-suit-item:hover{background:var(--bg3)}
+.values-suit-top{display:flex;align-items:center;gap:16px;margin-bottom:10px}
+.values-suit-letter{font-family:var(--f);font-size:44px;font-weight:800;color:var(--green);line-height:1;flex-shrink:0;width:44px;text-align:center;display:inline-block}
+.values-suit-name{font-family:var(--f);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.values-suit-item p{color:var(--dim);font-size:13px;line-height:1.7;font-weight:300;margin:0}
+@media (max-width: 900px) {
+  .values-suit{grid-template-columns:1fr}
+  .values-suit-photo{min-height:0;aspect-ratio:16/9}
+}
 
 /* COMMITMENT CARDS */
 .commit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:56px;border:1px solid var(--line)}
@@ -349,3 +410,37 @@ footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
 /* LEGAL PAGES */
 
 
+
+/* VALUES / SUIT */
+.values-lede{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin-top:12px;max-width:760px}
+.values-lede strong{color:var(--green);font-weight:700;letter-spacing:.08em}
+.suit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px;align-items:stretch}
+.suit-photo{position:relative;min-height:420px;background:var(--bg2)}
+.suit-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.suit-photo-label{position:absolute;left:20px;bottom:20px;display:flex;gap:2px}
+.suit-photo-label span{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--green);color:#0c0c0c;font-family:var(--f);font-size:16px;font-weight:800}
+.suit-list{display:flex;flex-direction:column;background:var(--bg2)}
+.suit-item{flex:1;display:flex;flex-direction:column;justify-content:center;padding:22px 28px;border-bottom:1px solid var(--line);transition:background .2s}
+.suit-item:last-child{border-bottom:none}
+.suit-item:hover{background:var(--bg3)}
+.suit-item-top{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+.suit-letter{font-family:var(--f);font-size:28px;font-weight:800;color:var(--green);line-height:1;width:28px}
+.suit-name{font-family:var(--f);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.suit-item p{color:var(--dim);font-size:13px;line-height:1.65;font-weight:300;margin:0}
+@media (max-width: 900px) {
+  .suit-grid{grid-template-columns:1fr}
+  .suit-photo{min-height:280px;aspect-ratio:16/9}
+}
+
+
+/* LOCKED NAV — wins over leftover charcoal/transparent rules. Do not restyle. */
+nav {
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+nav.on {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}

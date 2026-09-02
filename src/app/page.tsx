@@ -1,12 +1,12 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
-import { TailoredAirSite } from "@/components/tailored-air-site";
+import { HomeEnhancements } from "@/components/home-enhancements";
+import { HtmlBlock } from "@/components/html-block";
+import { readPageHtml } from "@/lib/html";
 
 export default function Home() {
-  const html = readFileSync(
-    path.join(process.cwd(), "src/content/site-body.html"),
-    "utf8",
+  return (
+    <main>
+      <HtmlBlock html={readPageHtml("home.html")} />
+      <HomeEnhancements />
+    </main>
   );
-
-  return <TailoredAirSite html={html} />;
 }
