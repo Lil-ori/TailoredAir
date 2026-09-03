@@ -12,7 +12,6 @@ const nextConfig: NextConfig = {
       { source: "/contact-us/:path*", destination: "/contact", permanent: true },
       { source: "/services", destination: "/#svc", permanent: true },
       { source: "/services/", destination: "/#svc", permanent: true },
-      { source: "/services/:path*", destination: "/#svc", permanent: true },
       { source: "/privacy-policy", destination: "/privacy", permanent: true },
       { source: "/privacy-policy/", destination: "/privacy", permanent: true },
       { source: "/terms-and-conditions", destination: "/terms", permanent: true },
