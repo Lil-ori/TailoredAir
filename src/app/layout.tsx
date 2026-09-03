@@ -1,6 +1,8 @@
 import { getSiteUrl } from "@/lib/site";
+import { businessJsonLd, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { JsonLd } from "@/components/json-ld";
 import { SiteFooter, SiteNav } from "@/components/site-chrome";
 import { SiteUiProvider } from "@/components/site-ui";
 import "./site.css";
@@ -32,23 +34,15 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Tailored Air LLC" }],
   robots: { index: true, follow: true },
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: `${site}/`,
-    title: "Tailored Air | Littleton HVAC Experts",
-    description:
-      "Expert HVAC installation, repair & maintenance in Littleton, CO and the Denver Metro area. American Standard partner. Call (720) 296-6008.",
-    images: [`${site}/images/logo.png`],
     locale: "en_US",
     siteName: "Tailored Air",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tailored Air | Littleton HVAC Experts",
-    description:
-      "Expert HVAC installation, repair & maintenance in Littleton, CO. American Standard partner. 24/7 emergency service.",
-    images: [`${site}/images/logo.png`],
+    images: [DEFAULT_OG_IMAGE],
   },
   icons: {
     icon: "/favicon.png",
@@ -56,42 +50,11 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "HVACBusiness",
-      "@id": `${site}/#business`,
-      name: "Tailored Air",
-      legalName: "Tailored Air LLC",
-      url: site,
-      logo: `${site}/images/logo.png`,
-      telephone: "+17202966008",
-      email: "hello@tailoredair.com",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Littleton",
-        addressRegion: "CO",
-        addressCountry: "US",
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5",
-        bestRating: "5",
-        ratingCount: "47",
-      },
-    },
-  ],
-};
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={businessJsonLd()} />
         <SiteUiProvider>
           <SiteNav />
           {children}

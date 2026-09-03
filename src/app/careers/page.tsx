@@ -1,12 +1,13 @@
 import { ComingSoon } from "@/components/coming-soon";
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Careers",
   description:
     "Join the Tailored Air team in Littleton, CO. HVAC career openings will be posted here.",
-  alternates: { canonical: "/careers" },
-};
+  path: "/careers",
+  index: false,
+});
 
 export default function CareersPage() {
   return (

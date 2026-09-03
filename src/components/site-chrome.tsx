@@ -51,7 +51,9 @@ export function SiteNav() {
         </a>
         <ul className="nav-links">
           <li>
-            <a href="/#svc">HVAC Services</a>
+            <a href="/services" className={pathname === "/services" ? "is-active" : undefined}>
+              HVAC Services
+            </a>
           </li>
           <li className="dropdown">
             <a href="/about">About</a>
@@ -63,9 +65,6 @@ export function SiteNav() {
               <a href="/blog">Blog</a>
               <a href="/careers">Careers</a>
             </div>
-          </li>
-          <li>
-            <a href="/#rev">Reviews</a>
           </li>
           <li>
             <a href="/contact" className={pathname === "/contact" ? "is-active" : undefined}>
@@ -99,7 +98,7 @@ export function SiteNav() {
           <button type="button" className="mobile-menu-close" onClick={closeMenu} aria-label="Close menu">
             ✕
           </button>
-          <a href="/#svc" onClick={closeMenu}>
+          <a href="/services" onClick={closeMenu}>
             HVAC Services
           </a>
           <a href="/about" onClick={closeMenu}>
@@ -107,9 +106,6 @@ export function SiteNav() {
           </a>
           <a href="/blog" onClick={closeMenu}>
             Blog
-          </a>
-          <a href="/#rev" onClick={closeMenu}>
-            Reviews
           </a>
           <a href="/contact" onClick={closeMenu}>
             Contact
@@ -160,13 +156,19 @@ export function SiteFooter() {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/#svc">HVAC Services</a>
+              <a href="/services">HVAC Services</a>
             </li>
             <li>
               <a href="/about">About Us</a>
             </li>
             <li>
-              <a href="/blog">Blog</a>
+              <a href="/why-choose-us">Why Choose Us</a>
+            </li>
+            <li>
+              <a href="/faq">FAQ</a>
+            </li>
+            <li>
+              <a href="/values">Our Values</a>
             </li>
             <li>
               <a href="/contact">Contact</a>
