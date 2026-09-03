@@ -59,7 +59,7 @@ nav.on {
 .btn-w:hover{opacity:.85}
 .btn-schedule{font-family:var(--f);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:13px 26px;background:#0075be;color:var(--white);text-decoration:none;transition:opacity .2s;display:inline-block}
 .btn-schedule:hover{opacity:.85}
-.btn-ghost{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;display:flex;align-items:center;gap:8px;font-weight:500;transition:color .2s}
+.btn-ghost{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;display:flex;align-items:center;gap:8px;font-weight:500;transition:color .2s;padding:13px 0}
 .btn-ghost:hover{color:var(--white)}
 .btn-ghost::after{content:'→';font-size:14px}
 

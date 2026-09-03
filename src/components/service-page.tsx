@@ -7,6 +7,7 @@ export function ServicePageContent({ service }: { service: ServicePage }) {
       <h2>{service.title}</h2>
       <div className="service-layout">
         <div className="service-layout-photo">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={service.image} alt={service.imageAlt} />
         </div>
         <div className="service-layout-list">

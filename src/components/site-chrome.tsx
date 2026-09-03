@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useSiteUi } from "@/components/site-ui";
 import { services } from "@/lib/services";
 
@@ -52,21 +53,21 @@ export function SiteNav() {
         </a>
         <ul className="nav-links">
           <li className="dropdown">
-            <a
+            <Link
               href="/services/heating"
               className={pathname.startsWith("/services/") ? "is-active" : undefined}
             >
               HVAC Services
-            </a>
+            </Link>
             <div className="dropdown-menu">
               {services.map((service) => (
-                <a
+                <Link
                   key={service.slug}
                   href={`/services/${service.slug}`}
                   className={pathname === `/services/${service.slug}` ? "is-active" : undefined}
                 >
                   {service.navLabel}
-                </a>
+                </Link>
               ))}
             </div>
           </li>
@@ -116,9 +117,9 @@ export function SiteNav() {
           <div className="mobile-menu-group">
             <span>HVAC Services</span>
             {services.map((service) => (
-              <a key={service.slug} href={`/services/${service.slug}`} onClick={closeMenu}>
+              <Link key={service.slug} href={`/services/${service.slug}`} onClick={closeMenu}>
                 {service.navLabel}
-              </a>
+              </Link>
             ))}
           </div>
           <a href="/about" onClick={closeMenu}>
