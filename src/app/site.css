@@ -158,17 +158,17 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 /* FOOTER */
 footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
 .ft{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr auto;gap:32px;align-items:start;padding:48px 48px 36px;border-bottom:1px solid rgba(255,255,255,.07)}
-.ft-brand{max-width:400px}
+.ft-brand{max-width:430px}
 .ft-logo{margin-bottom:14px}
 .ft-brand p{color:rgba(255,255,255,.45);font-size:12px;line-height:1.7;font-weight:300}
 .ft-social{display:flex;gap:10px;margin-top:16px}
 .ft-social a{width:32px;height:32px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;transition:border-color .2s,color .2s}
 .ft-social a:hover{border-color:rgba(255,255,255,.4);color:#fff}
-.ft-col{text-align:center}
+.ft-col{text-align:left}
 .ft-col h4{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px;font-weight:600}
-.ft-col ul{list-style:none;display:flex;flex-direction:column;align-items:center}
-.ft-col li{margin-bottom:9px}
-.ft-col a{color:rgba(255,255,255,.55);font-size:13px;text-decoration:none;font-weight:300;transition:color .2s;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.ft-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-start}
+.ft-col li{margin-bottom:9px;padding:0}
+.ft-col a{color:rgba(255,255,255,.55);font-size:13px;text-decoration:none;font-weight:300;transition:color .2s;display:inline-flex;align-items:center;justify-content:flex-start;gap:7px}
 .ft-col a:hover{color:var(--white)}
 .ft-col a svg{flex-shrink:0;display:block}
 .ft-phone{font-size:15px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:.01em}
