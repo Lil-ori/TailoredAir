@@ -306,6 +306,7 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 .dropdown::after{content:'';position:absolute;top:100%;left:0;right:0;height:16px}
 .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(14,14,14,.98);border:1px solid rgba(255,255,255,.12);min-width:180px;z-index:200;backdrop-filter:blur(16px);box-shadow:0 8px 32px rgba(0,0,0,.4);padding:6px 0}
 .dropdown:hover .dropdown-menu{display:block}
+.dropdown.dropdown-closed .dropdown-menu,.dropdown.dropdown-closed:hover .dropdown-menu{display:none}
 .dropdown-menu a{display:block;padding:12px 20px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;font-weight:500;transition:color .2s,background .2s;white-space:nowrap}
 .dropdown-menu a:hover,.dropdown-menu a.is-active{color:var(--white);background:rgba(255,255,255,.06)}
 .dropdown > a::after{content:' ↓';font-size:9px;opacity:.5;margin-left:2px}

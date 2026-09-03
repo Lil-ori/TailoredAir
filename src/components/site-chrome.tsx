@@ -14,6 +14,7 @@ export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navOn, setNavOn] = useState(false);
   const [navHidden, setNavHidden] = useState(false);
+  const [hvacMenuLocked, setHvacMenuLocked] = useState(false);
 
   useEffect(() => {
     let lastScroll = 0;
@@ -54,8 +55,18 @@ export function SiteNav() {
           />
         </a>
         <ul className="nav-links">
-          <li className="dropdown">
-            <a href="/#svc">HVAC Services</a>
+          <li
+            className={hvacMenuLocked ? "dropdown dropdown-closed" : "dropdown"}
+            onMouseLeave={() => setHvacMenuLocked(false)}
+          >
+            <a
+              href="/#svc"
+              onClick={() => {
+                setHvacMenuLocked(true);
+              }}
+            >
+              HVAC Services
+            </a>
             <div className="dropdown-menu">
               {services.map((service) => (
                 <Link
