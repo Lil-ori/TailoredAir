@@ -378,7 +378,7 @@ footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
 /* VALUES / SUIT — 3:2 art + cards scale as one 3:1 block */
 .values-lede{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin-top:12px;max-width:none;width:100%}
 .values-suit-frame{width:100%;container-type:inline-size;aspect-ratio:3/1;position:relative;margin-top:56px;overflow:hidden}
-.values-suit{position:absolute;top:0;left:0;width:1280px;height:calc(1280px / 3);display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);transform-origin:top left;transform:scale(calc(100cqi / 1280))}
+.values-suit{position:absolute;top:0;left:0;width:1280px;height:calc(1280px / 3);display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);transform-origin:top left;transform:scale(calc(100cqi / 1280px))}
 .values-suit-photo{min-height:0;height:100%;background:#d0d0d0;overflow:hidden}
 .values-suit-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .values-suit-list{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);min-height:0}
