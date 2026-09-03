@@ -6,7 +6,8 @@ The original single-file HTML is now a Next.js site with real, indexable routes:
 
 - `/` home
 - `/about` `/why-choose-us` `/faq` `/values`
-- `/blog` `/careers` (coming soon)
+- `/blog` (coming soon)
+- `/careers`
 - `/contact` `/privacy` `/terms`
 
 Each page has its own title, description, and canonical URL. `sitemap.xml` and `robots.txt` are generated automatically. The live domain is **https://tailoredair.com** (`NEXT_PUBLIC_SITE_URL` if you ever need to override it).
@@ -40,7 +41,7 @@ Old paths 301 to the new site, including `/contact-us` → `/contact`, `/about-u
 
 ## What works
 
-- Home, About, Why Choose Us, FAQ, Values, Contact, Privacy, Terms
-- Blog and Careers placeholders
+- Home, About, Why Choose Us, FAQ, Values, Careers, Contact, Privacy, Terms
+- Blog placeholder
 - Schedule / free estimate form
 - Mobile menu and the original layout
