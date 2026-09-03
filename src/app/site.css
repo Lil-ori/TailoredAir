@@ -155,25 +155,6 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 .btn-dk-outline{font-family:var(--f);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:13px 24px;border:1px solid #72b83e;background:#72b83e;color:var(--white);text-decoration:none;text-align:center;transition:opacity .2s;display:inline-block}
 .btn-dk-outline:hover{opacity:.85}
 
-/* FOOTER */
-footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
-.ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr auto;gap:32px;align-items:center;padding:48px 48px 36px;border-bottom:1px solid rgba(255,255,255,.07)}
-.ft-brand{max-width:320px}
-.ft-logo{margin-bottom:14px}
-.ft-brand p{color:rgba(255,255,255,.45);font-size:12px;line-height:1.7;font-weight:300}
-.ft-social{display:flex;gap:10px;margin-top:16px}
-.ft-social a{width:32px;height:32px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;transition:border-color .2s,color .2s}
-.ft-social a:hover{border-color:rgba(255,255,255,.4);color:#fff}
-.ft-col h4{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px;font-weight:600}
-.ft-col ul{list-style:none}
-.ft-col li{margin-bottom:9px}
-.ft-col a{color:rgba(255,255,255,.55);font-size:13px;text-decoration:none;font-weight:300;transition:color .2s;display:flex;align-items:center;gap:7px}
-.ft-col a:hover{color:var(--white)}
-.ft-phone{font-size:15px;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:.01em}
-.ft-bot{padding:16px 48px;display:flex;justify-content:space-between;align-items:center}
-.ft-bot span{font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.04em}
-.ft-badge{background:var(--green);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px}
-
 /* SERVICE AREA */
 .area-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .area-copy{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
@@ -260,9 +241,6 @@ footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
   .area-grid{grid-template-columns:1fr;gap:40px}
   .area-list{grid-template-columns:1fr 1fr}
 
-  /* FOOTER */
-  .ft{grid-template-columns:1fr 1fr;gap:32px}
-  .ft-brand{grid-column:1/-1}
 }
 
 @media (max-width: 600px) {
@@ -297,11 +275,6 @@ footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
 
   /* SERVICE AREA */
   .area-list{grid-template-columns:1fr}
-
-  /* FOOTER */
-  .ft{grid-template-columns:1fr;padding:40px 16px 28px}
-  .ft-brand{grid-column:auto}
-  .ft-bot{flex-direction:column;gap:8px;text-align:center;padding:14px 16px}
 
   /* LIGHTBOX */
   .lightbox{padding:28px 20px}
