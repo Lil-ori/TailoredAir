@@ -55,12 +55,7 @@ export function SiteNav() {
         </a>
         <ul className="nav-links">
           <li className="dropdown">
-            <Link
-              href="/services/heating"
-              className={pathname.startsWith("/services/") ? "is-active" : undefined}
-            >
-              HVAC Services
-            </Link>
+            <a href="/#svc">HVAC Services</a>
             <div className="dropdown-menu">
               {services.map((service) => (
                 <Link
@@ -117,7 +112,9 @@ export function SiteNav() {
             ✕
           </button>
           <div className="mobile-menu-group">
-            <span>HVAC Services</span>
+            <a href="/#svc" onClick={closeMenu}>
+              HVAC Services
+            </a>
             {services.map((service) => (
               <Link key={service.slug} href={`/services/${service.slug}`} onClick={closeMenu}>
                 {service.navLabel}
