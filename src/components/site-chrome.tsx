@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSiteUi } from "@/components/site-ui";
+import { services } from "@/lib/services";
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -50,8 +51,24 @@ export function SiteNav() {
           />
         </a>
         <ul className="nav-links">
-          <li>
-            <a href="/#svc">HVAC Services</a>
+          <li className="dropdown">
+            <a
+              href="/services/heating"
+              className={pathname.startsWith("/services/") ? "is-active" : undefined}
+            >
+              HVAC Services
+            </a>
+            <div className="dropdown-menu">
+              {services.map((service) => (
+                <a
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className={pathname === `/services/${service.slug}` ? "is-active" : undefined}
+                >
+                  {service.navLabel}
+                </a>
+              ))}
+            </div>
           </li>
           <li className="dropdown">
             <a href="/about">About</a>
@@ -63,9 +80,6 @@ export function SiteNav() {
               <a href="/blog">Blog</a>
               <a href="/careers">Careers</a>
             </div>
-          </li>
-          <li>
-            <a href="/#rev">Reviews</a>
           </li>
           <li>
             <a href="/contact" className={pathname === "/contact" ? "is-active" : undefined}>
@@ -99,17 +113,19 @@ export function SiteNav() {
           <button type="button" className="mobile-menu-close" onClick={closeMenu} aria-label="Close menu">
             ✕
           </button>
-          <a href="/#svc" onClick={closeMenu}>
-            HVAC Services
-          </a>
+          <div className="mobile-menu-group">
+            <span>HVAC Services</span>
+            {services.map((service) => (
+              <a key={service.slug} href={`/services/${service.slug}`} onClick={closeMenu}>
+                {service.navLabel}
+              </a>
+            ))}
+          </div>
           <a href="/about" onClick={closeMenu}>
             About
           </a>
           <a href="/blog" onClick={closeMenu}>
             Blog
-          </a>
-          <a href="/#rev" onClick={closeMenu}>
-            Reviews
           </a>
           <a href="/contact" onClick={closeMenu}>
             Contact
