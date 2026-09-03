@@ -53,8 +53,8 @@ nav.on {
 .hero h1{position:relative;font-family:var(--f);font-size:clamp(36px,5.5vw,72px);font-weight:700;line-height:1.05;letter-spacing:-.02em;margin-bottom:40px}
 .hero h1 em{font-style:normal;color:var(--green)}
 .hero-foot{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
-.hero-sub{max-width:380px;color:rgba(255,255,255,.7);font-size:15px;line-height:1.75;font-weight:300;margin:0}
-.hero-btns{display:flex;gap:14px;align-items:flex-end;flex-shrink:0}
+.hero-sub{max-width:380px;color:rgba(255,255,255,.7);font-size:15px;line-height:1.75;font-weight:300;margin:0;padding:0;align-self:flex-end}
+.hero-btns{display:flex;gap:14px;align-items:flex-end;flex-shrink:0;align-self:flex-end;margin:0;padding:0}
 .btn-w{font-family:var(--f);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:13px 26px;background:#72b83e;color:var(--white);text-decoration:none;transition:opacity .2s}
 .btn-w:hover{opacity:.85}
 .btn-schedule{font-family:var(--f);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:13px 26px;background:#0075be;color:var(--white);text-decoration:none;transition:opacity .2s;display:inline-block}
