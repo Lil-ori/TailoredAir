@@ -1,4 +1,4 @@
-import { getSiteUrl } from "@/lib/site";
+import { CONTACT_EMAIL, getSiteUrl } from "@/lib/site";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
@@ -69,7 +69,7 @@ const jsonLd = {
       url: site,
       logo: `${site}/images/logo.png`,
       telephone: "+17202966008",
-      email: "hello@tailoredair.com",
+      email: CONTACT_EMAIL,
       address: {
         "@type": "PostalAddress",
         addressLocality: "Littleton",
