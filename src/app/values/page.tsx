@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Values",
   description:
-    "SUIT — Step-Up, Unity, Integrity, and Trust. The values behind every Tailored Air HVAC call in Littleton and the Denver metro area.",
+    "SUIT — Solve It, Understand, Integrity, and Trust. The values behind every Tailored Air HVAC call in Littleton and the Denver metro area.",
   alternates: { canonical: "/values" },
 };
 
