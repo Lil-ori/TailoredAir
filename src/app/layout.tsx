@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Tailored Air",
-    images: [DEFAULT_OG_IMAGE],
+    images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "Tailored Air HVAC in Littleton and Denver Metro" }],
   },
   twitter: {
     card: "summary_large_image",

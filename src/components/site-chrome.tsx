@@ -50,10 +50,19 @@ export function SiteNav() {
           />
         </a>
         <ul className="nav-links">
-          <li>
-            <a href="/services" className={pathname === "/services" ? "is-active" : undefined}>
+          <li className="dropdown">
+            <a href="/services" className={pathname.startsWith("/services") ? "is-active" : undefined}>
               HVAC Services
             </a>
+            <div className="dropdown-menu">
+              <a href="/services">All Services</a>
+              <a href="/services/heating">Heating</a>
+              <a href="/services/cooling">Cooling</a>
+              <a href="/services/air-quality">Air Quality</a>
+              <a href="/services/water-heaters">Water Heaters</a>
+              <a href="/services/commercial">Commercial</a>
+              <a href="/services/emergency">Emergency</a>
+            </div>
           </li>
           <li className="dropdown">
             <a href="/about">About</a>

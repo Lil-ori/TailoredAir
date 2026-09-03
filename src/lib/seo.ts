@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { SERVICES } from "@/lib/services";
 import { getSiteUrl } from "@/lib/site";
 
 export const SITE_NAME = "Tailored Air";
-export const DEFAULT_OG_IMAGE = "/images/logo.png";
+export const DEFAULT_OG_IMAGE = "/images/og.jpg";
+export const GOOGLE_PROFILE_URL = "https://maps.app.goo.gl/2PU5vhgZRs3mSjiT9";
 
 export const SERVICE_AREAS = [
   "Littleton, CO",
@@ -22,17 +24,8 @@ export const SERVICE_AREAS = [
 export const SAME_AS = [
   "https://www.facebook.com/people/Tailored-Air/61560839943549/",
   "https://www.instagram.com/tailoredaircolorado",
-  "https://maps.app.goo.gl/2PU5vhgZRs3mSjiT9",
+  GOOGLE_PROFILE_URL,
 ];
-
-export const HVAC_SERVICES = [
-  { name: "Heating", slug: "heating", description: "Furnace, boiler, and heat pump installation, repair, and seasonal maintenance." },
-  { name: "Cooling", slug: "cooling", description: "Central air, ductless mini-splits, and smart thermostat upgrades." },
-  { name: "Indoor Air Quality", slug: "air-quality", description: "Purifiers, humidifiers, UV lamps, and CO detectors." },
-  { name: "Water Heaters", slug: "water-heaters", description: "Traditional and tankless water heater installation, repair, and maintenance." },
-  { name: "Commercial HVAC", slug: "commercial", description: "Design, installation, upgrades, and maintenance for commercial properties." },
-  { name: "Emergency HVAC Repair", slug: "emergency", description: "24/7 emergency heating and cooling repair in Littleton and the Denver metro." },
-] as const;
 
 export const FAQ_ITEMS = [
   {
@@ -105,7 +98,7 @@ export function pageMetadata({
       title: ogTitle ?? title,
       description,
       url: canonical,
-      images: [DEFAULT_OG_IMAGE],
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: "Tailored Air HVAC in Littleton and Denver Metro" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -128,7 +121,7 @@ export function businessJsonLd() {
         legalName: "Tailored Air LLC",
         url: site,
         logo: `${site}/images/logo.png`,
-        image: `${site}/images/logo.png`,
+        image: `${site}/images/og.jpg`,
         telephone: "+17202966008",
         email: "hello@tailoredair.com",
         priceRange: "$$",
@@ -160,13 +153,13 @@ export function businessJsonLd() {
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "HVAC Services",
-          itemListElement: HVAC_SERVICES.map((service) => ({
+          itemListElement: SERVICES.map((service) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
               name: service.name,
               description: service.description,
-              url: `${site}/services#${service.slug}`,
+              url: `${site}/services/${service.slug}`,
               areaServed: "Littleton, CO and Denver metro",
             },
           })),
@@ -204,6 +197,20 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
       name: item.name,
       item: item.path === "/" ? `${site}/` : `${site}${item.path}`,
     })),
+  };
+}
+
+export function serviceJsonLd(service: { name: string; description: string; slug: string }) {
+  const site = getSiteUrl();
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    url: `${site}/services/${service.slug}`,
+    provider: { "@id": `${site}/#business` },
+    areaServed: "Littleton, CO and Denver metro",
+    serviceType: service.name,
   };
 }
 
