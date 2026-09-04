@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Careers at Tailored Air",
     description:
-      "HVAC careers in Littleton and the Denver metro. Send your resume to hello@tailoredair.com.",
+      "HVAC careers in Littleton and the Denver metro. Send your resume to solutions@tailoredair.com.",
     url: "/careers",
   },
 };
