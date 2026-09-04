@@ -1,9 +1,11 @@
-import { getSiteUrl } from "@/lib/site";
+import { CONTACT_EMAIL, getSiteUrl } from "@/lib/site";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { SiteFooter, SiteNav } from "@/components/site-chrome";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteNav } from "@/components/site-chrome";
 import { SiteUiProvider } from "@/components/site-ui";
 import "./site.css";
+import "./footer.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -67,7 +69,7 @@ const jsonLd = {
       url: site,
       logo: `${site}/images/logo.png`,
       telephone: "+17202966008",
-      email: "hello@tailoredair.com",
+      email: CONTACT_EMAIL,
       address: {
         "@type": "PostalAddress",
         addressLocality: "Littleton",
