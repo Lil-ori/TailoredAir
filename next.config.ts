@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: [
+    "127.0.0.1",
+    "localhost",
+    "*.cursor.sh",
+    "*.cursor.com",
+  ],
   async redirects() {
     return [
       { source: "/home", destination: "/", permanent: true },
@@ -12,7 +18,6 @@ const nextConfig: NextConfig = {
       { source: "/contact-us/:path*", destination: "/contact", permanent: true },
       { source: "/services", destination: "/#svc", permanent: true },
       { source: "/services/", destination: "/#svc", permanent: true },
-      { source: "/services/:path*", destination: "/#svc", permanent: true },
       { source: "/privacy-policy", destination: "/privacy", permanent: true },
       { source: "/privacy-policy/", destination: "/privacy", permanent: true },
       { source: "/terms-and-conditions", destination: "/terms", permanent: true },
