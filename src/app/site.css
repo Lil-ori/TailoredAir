@@ -355,20 +355,6 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 /* VALUES / SUIT — live in values.css (imported after this file) so other PRs cannot replace them. */
 
 /* SERVICE PAGES */
-.service-layout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:56px;align-items:stretch}
-.service-layout-photo{position:relative;background:var(--bg2);overflow:hidden;min-height:520px}
-.service-layout-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-.service-layout-list{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line)}
-.service-layout-item{background:var(--bg2);padding:28px 32px;transition:background .2s}
-.service-layout-item:hover{background:var(--bg3)}
-.service-layout-intro{display:flex;align-items:center}
-.service-layout-intro p{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin:0}
-.service-layout-name{font-family:var(--f);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-.service-layout-item p{color:var(--dim);font-size:13px;line-height:1.7;font-weight:300;margin:0}
-@media (max-width: 900px) {
-  .service-layout{grid-template-columns:1fr}
-  .service-layout-photo{min-height:0;aspect-ratio:16/9}
-}
 
 /* COMMITMENT CARDS */
 .commit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:56px;border:1px solid var(--line)}
