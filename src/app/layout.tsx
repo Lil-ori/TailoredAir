@@ -6,6 +6,7 @@ import { SiteNav } from "@/components/site-chrome";
 import { SiteUiProvider } from "@/components/site-ui";
 import "./site.css";
 import "./footer.css";
+import "./values.css";
 
 const inter = Inter({
   subsets: ["latin"],

@@ -352,22 +352,7 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 
 
 
-/* VALUES / SUIT */
-.values-lede{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin-top:12px;max-width:none;width:100%}
-.values-suit{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:56px;align-items:stretch}
-.values-suit-photo{position:relative;background:#f3f3f3;overflow:hidden;min-height:420px}
-.values-suit-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;display:block}
-.values-suit-list{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line)}
-.values-suit-item{background:var(--bg2);padding:28px 32px;transition:background .2s}
-.values-suit-item:hover{background:var(--bg3)}
-.values-suit-top{display:flex;align-items:center;gap:16px;margin-bottom:10px}
-.values-suit-letter{font-family:var(--f);font-size:44px;font-weight:800;color:var(--green);line-height:1;flex-shrink:0;width:44px;text-align:center;display:inline-block}
-.values-suit-name{font-family:var(--f);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-.values-suit-item p{color:var(--dim);font-size:13px;line-height:1.7;font-weight:300;margin:0}
-@media (max-width: 900px) {
-  .values-suit{grid-template-columns:1fr}
-  .values-suit-photo{min-height:0;aspect-ratio:16/9}
-}
+/* VALUES / SUIT — live in values.css (imported after this file) so other PRs cannot replace them. */
 
 /* SERVICE PAGES */
 .service-layout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:56px;align-items:stretch}
@@ -428,8 +413,7 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 
 
 
-/* VALUES / SUIT */
-.values-lede{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin-top:12px;max-width:760px}
+/* Unused legacy SUIT card layout. Live values styles are in values.css. */
 .values-lede strong{color:var(--green);font-weight:700;letter-spacing:.08em}
 .suit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px;align-items:stretch}
 .suit-photo{position:relative;min-height:420px;background:var(--bg2)}
