@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { SERVICES } from "@/lib/services";
-import { getSiteUrl } from "@/lib/site";
+import { services } from "@/lib/services";
+import { CONTACT_EMAIL, getSiteUrl } from "@/lib/site";
 
 export const SITE_NAME = "Tailored Air";
 export const DEFAULT_OG_IMAGE = "/images/og.jpg";
@@ -123,7 +123,7 @@ export function businessJsonLd() {
         logo: `${site}/images/logo.png`,
         image: `${site}/images/og.jpg`,
         telephone: "+17202966008",
-        email: "hello@tailoredair.com",
+        email: CONTACT_EMAIL,
         priceRange: "$$",
         address: {
           "@type": "PostalAddress",
@@ -153,11 +153,11 @@ export function businessJsonLd() {
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "HVAC Services",
-          itemListElement: SERVICES.map((service) => ({
+          itemListElement: services.map((service) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: service.name,
+              name: service.title,
               description: service.description,
               url: `${site}/services/${service.slug}`,
               areaServed: "Littleton, CO and Denver metro",
@@ -200,17 +200,17 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   };
 }
 
-export function serviceJsonLd(service: { name: string; description: string; slug: string }) {
+export function serviceJsonLd(service: { title: string; description: string; slug: string }) {
   const site = getSiteUrl();
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: service.name,
+    name: service.title,
     description: service.description,
     url: `${site}/services/${service.slug}`,
     provider: { "@id": `${site}/#business` },
     areaServed: "Littleton, CO and Denver metro",
-    serviceType: service.name,
+    serviceType: service.title,
   };
 }
 

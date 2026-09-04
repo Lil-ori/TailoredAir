@@ -1,8 +1,12 @@
 "use client";
 
+/* Nav and mobile menu only. Footer is src/components/site-footer.tsx — do not paste an older footer here. */
+
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useSiteUi } from "@/components/site-ui";
+import { services } from "@/lib/services";
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -10,6 +14,7 @@ export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navOn, setNavOn] = useState(false);
   const [navHidden, setNavHidden] = useState(false);
+  const [hvacMenuLocked, setHvacMenuLocked] = useState(false);
 
   useEffect(() => {
     let lastScroll = 0;
@@ -50,18 +55,28 @@ export function SiteNav() {
           />
         </a>
         <ul className="nav-links">
-          <li className="dropdown">
-            <a href="/services" className={pathname.startsWith("/services") ? "is-active" : undefined}>
+          <li
+            className={hvacMenuLocked ? "dropdown dropdown-closed" : "dropdown"}
+            onMouseLeave={() => setHvacMenuLocked(false)}
+          >
+            <a
+              href="/#svc"
+              onClick={() => {
+                setHvacMenuLocked(true);
+              }}
+            >
               HVAC Services
             </a>
             <div className="dropdown-menu">
-              <a href="/services">All Services</a>
-              <a href="/services/heating">Heating</a>
-              <a href="/services/cooling">Cooling</a>
-              <a href="/services/air-quality">Air Quality</a>
-              <a href="/services/water-heaters">Water Heaters</a>
-              <a href="/services/commercial">Commercial</a>
-              <a href="/services/emergency">Emergency</a>
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className={pathname === `/services/${service.slug}` ? "is-active" : undefined}
+                >
+                  {service.navLabel}
+                </Link>
+              ))}
             </div>
           </li>
           <li className="dropdown">
@@ -107,9 +122,16 @@ export function SiteNav() {
           <button type="button" className="mobile-menu-close" onClick={closeMenu} aria-label="Close menu">
             ✕
           </button>
-          <a href="/services" onClick={closeMenu}>
-            HVAC Services
-          </a>
+          <div className="mobile-menu-group">
+            <a href="/#svc" onClick={closeMenu}>
+              HVAC Services
+            </a>
+            {services.map((service) => (
+              <Link key={service.slug} href={`/services/${service.slug}`} onClick={closeMenu}>
+                {service.navLabel}
+              </Link>
+            ))}
+          </div>
           <a href="/about" onClick={closeMenu}>
             About
           </a>
@@ -138,148 +160,4 @@ export function SiteNav() {
   );
 }
 
-export function SiteFooter() {
-  return (
-    <footer>
-      <div className="ft">
-        <div className="ft-brand">
-          <div className="ft-logo">
-            <a href="/">
-              <img
-                src="/images/logo.png"
-                alt="Tailored Air"
-                style={{ height: 76, width: "auto", display: "block" }}
-              />
-            </a>
-          </div>
-          <p>
-            A new standard in heating and cooling, tailored to your home, your business, and
-            your life. Honest service, fair pricing, and a team that treats every job like
-            it&apos;s our own house on the line.
-          </p>
-        </div>
-        <div className="ft-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/services">HVAC Services</a>
-            </li>
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-            <li>
-              <a href="/why-choose-us">Why Choose Us</a>
-            </li>
-            <li>
-              <a href="/faq">FAQ</a>
-            </li>
-            <li>
-              <a href="/values">Our Values</a>
-            </li>
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-        <div className="ft-col">
-          <h4>Service Area</h4>
-          <ul>
-            <li>
-              <a href="/#area">Littleton, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Englewood, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Highlands Ranch</a>
-            </li>
-            <li>
-              <a href="/#area">Lakewood, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Denver Metro</a>
-            </li>
-          </ul>
-        </div>
-        <div className="ft-col">
-          <h4>Contact Us</h4>
-          <div className="ft-phone">(720) 296-6008</div>
-          <ul>
-            <li>
-              <a
-                href="https://www.facebook.com/people/Tailored-Air/61560839943549/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/tailoredaircolorado"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://maps.app.goo.gl/2PU5vhgZRs3mSjiT9"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Google
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <img
-            src="/images/asset-10-45ea3094a9a8ffa3.svg"
-            alt="Proudly Serving American Standard Products"
-            style={{ width: 200, height: "auto", display: "block" }}
-          />
-        </div>
-      </div>
-      <div className="ft-bot">
-        <span>
-          © 2026 Tailored Air LLC. All rights reserved.{" "}
-          <a href="/privacy" className="legal-link">
-            Privacy Policy
-          </a>{" "}
-          <a href="/terms" className="legal-link">
-            Terms &amp; Conditions
-          </a>
-        </span>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span
-            style={{
-              fontSize: 9,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,.25)",
-              fontWeight: 600,
-              lineHeight: 1,
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-          >
-            Powered By:
-          </span>
-          <img
-            src="/images/asset-11-637ec214f4179f28.png"
-            alt="Lilori"
-            style={{ width: 42, height: "auto", display: "block", opacity: 0.7, marginBottom: 2 }}
-          />
-        </div>
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,.25)", letterSpacing: ".04em" }}>
-          Littleton, CO &amp; Denver Metro Area
-        </span>
-      </div>
-    </footer>
-  );
-}
+export { SiteFooter } from "@/components/site-footer";
