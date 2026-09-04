@@ -323,13 +323,6 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 .subpage-tab.active{color:var(--white);border-bottom-color:var(--green)}
 .subpage-content{display:block}
 .inner-page{padding-top:108px;min-height:70vh}
-.crumbs{padding:8px 48px 0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-.crumbs ol{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;align-items:center}
-.crumbs li{display:flex;align-items:center;gap:8px}
-.crumbs li:not(:last-child)::after{content:'/';color:rgba(255,255,255,.28)}
-.crumbs a{color:rgba(255,255,255,.55);text-decoration:none}
-.crumbs a:hover{color:#fff}
-.crumbs span[aria-current="page"]{color:rgba(255,255,255,.85)}
 .coming-soon{display:flex;align-items:center;justify-content:center;min-height:70vh;padding:60px 24px}
 .about-tabs{justify-content:center;position:relative;top:auto}
 .legal-link{color:rgba(255,255,255,.35);text-decoration:none;margin-left:12px}
@@ -351,7 +344,6 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 }
 @media (max-width: 600px) {
   .inner-page{padding-top:92px}
-  .crumbs{padding:8px 16px 0}
   .contact-grid{grid-template-columns:1fr !important}
 }
 
