@@ -471,9 +471,16 @@ nav.on {
 .svc-index-card p{color:var(--dim);font-size:14px;line-height:1.7;font-weight:300;margin:0 0 16px}
 .svc-index-card span{color:var(--green);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 
-.service-block{margin-top:40px;max-width:none;width:100%}
+.service-lede{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin-top:12px;max-width:760px}
+.service-hero{margin:40px 0 8px;overflow:hidden;background:var(--bg2)}
+.service-hero img{display:block;width:100%;height:auto;max-height:420px;object-fit:cover}
+.service-block{margin-top:40px;max-width:760px}
 .service-block h2{font-size:clamp(22px,2.4vw,28px);margin-bottom:12px}
 .service-block p{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin-top:12px}
+.service-issues{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:20px}
+.service-issue{background:var(--bg2);padding:22px 20px}
+.service-issue h3{font-size:15px;margin-bottom:8px}
+.service-issue p{margin:0;font-size:13px;line-height:1.65}
 .service-related{display:flex;flex-wrap:wrap;gap:12px 20px;padding:0;margin:16px 0 0;list-style:none}
 .service-related a{color:var(--green);text-decoration:none;font-size:14px;font-weight:600}
 .service-related a:hover{text-decoration:underline}
@@ -482,10 +489,5 @@ nav.on {
 .service-cta-copy a{color:var(--green)}
 
 @media (max-width: 900px) {
-  .subpage-inner{padding:56px 24px}
-  .svc-index{grid-template-columns:1fr}
-}
-
-@media (max-width: 600px) {
-  .subpage-inner{padding:40px 16px}
+  .svc-index,.service-issues{grid-template-columns:1fr}
 }
