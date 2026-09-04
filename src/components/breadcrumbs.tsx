@@ -6,7 +6,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
   return (
     <>
       <JsonLd data={breadcrumbJsonLd(items)} />
-      <nav className="crumbs" aria-label="Breadcrumb">
+      <div className="crumbs" role="navigation" aria-label="Breadcrumb">
         <ol>
           <li>
             <Link href="/">Home</Link>
@@ -24,7 +24,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
             );
           })}
         </ol>
-      </nav>
+      </div>
     </>
   );
 }
