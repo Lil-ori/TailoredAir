@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ValuesPage() {
   return (
-    <main className="inner-page values-page">
+    <main className="inner-page">
       <HtmlBlock html={readPageHtml("values-content.html")} />
     </main>
   );
