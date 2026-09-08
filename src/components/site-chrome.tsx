@@ -17,7 +17,15 @@ export function SiteNav() {
   const [hvacMenuLocked, setHvacMenuLocked] = useState(false);
 
   useEffect(() => {
-    let lastScroll = 0;
+    setNavHidden(false);
+    setHvacMenuLocked(false);
+    setMenuOpen(false);
+    document.body.style.overflow = "";
+    setNavOn(window.scrollY > 10);
+  }, [pathname]);
+
+  useEffect(() => {
+    let lastScroll = window.scrollY;
 
     const onScroll = () => {
       const current = window.scrollY;
@@ -35,7 +43,7 @@ export function SiteNav() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   function closeMenu() {
     setMenuOpen(false);
@@ -80,20 +88,20 @@ export function SiteNav() {
             </div>
           </li>
           <li className="dropdown">
-            <a href="/about">About</a>
+            <Link href="/about">About</Link>
             <div className="dropdown-menu">
-              <a href="/about">About Us</a>
-              <a href="/why-choose-us">Why Choose Us</a>
-              <a href="/faq">FAQ</a>
-              <a href="/values">Our Values</a>
-              <a href="/blog">Blog</a>
-              <a href="/careers">Careers</a>
+              <Link href="/about">About Us</Link>
+              <Link href="/why-choose-us">Why Choose Us</Link>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/values">Our Values</Link>
+              <Link href="/blog">Blog</Link>
+              <Link href="/careers">Careers</Link>
             </div>
           </li>
           <li>
-            <a href="/contact" className={pathname === "/contact" ? "is-active" : undefined}>
+            <Link href="/contact" className={pathname === "/contact" ? "is-active" : undefined}>
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
         <button
@@ -132,15 +140,15 @@ export function SiteNav() {
               </Link>
             ))}
           </div>
-          <a href="/about" onClick={closeMenu}>
+          <Link href="/about" onClick={closeMenu}>
             About
-          </a>
-          <a href="/blog" onClick={closeMenu}>
+          </Link>
+          <Link href="/blog" onClick={closeMenu}>
             Blog
-          </a>
-          <a href="/contact" onClick={closeMenu}>
+          </Link>
+          <Link href="/contact" onClick={closeMenu}>
             Contact
-          </a>
+          </Link>
           <a href="tel:7202966008" className="mobile-phone">
             (720) 296-6008
           </a>
