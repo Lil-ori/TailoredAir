@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { SiteFooter, SiteNav } from "@/components/site-chrome";
 import { SiteUiProvider } from "@/components/site-ui";
 import "./site.css";
+import "./values.css";
 
 const inter = Inter({
   subsets: ["latin"],
