@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Call, text, or email Tailored Air in Littleton, CO. (720) 296-6008. hello@tailoredair.com. 24/7 emergency HVAC service for the Denver metro area.",
+    "Call, text, or email Tailored Air in Littleton, CO. (720) 296-6008. solutions@tailoredair.com. 24/7 emergency HVAC service for the Denver metro area.",
   alternates: { canonical: "/contact" },
 };
 
