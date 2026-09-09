@@ -65,9 +65,6 @@ export function SiteNav() {
             </div>
           </li>
           <li>
-            <a href="/#rev">Reviews</a>
-          </li>
-          <li>
             <a href="/contact" className={pathname === "/contact" ? "is-active" : undefined}>
               Contact
             </a>
@@ -107,9 +104,6 @@ export function SiteNav() {
           </a>
           <a href="/blog" onClick={closeMenu}>
             Blog
-          </a>
-          <a href="/#rev" onClick={closeMenu}>
-            Reviews
           </a>
           <a href="/contact" onClick={closeMenu}>
             Contact
