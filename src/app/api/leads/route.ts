@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { mkdir, appendFile } from "node:fs/promises";
 import path from "node:path";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export const runtime = "nodejs";
 
@@ -72,7 +73,7 @@ export async function POST(request: Request) {
   const failures: string[] = [];
 
   const resendKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.LEADS_TO_EMAIL || "hello@tailoredair.com";
+  const toEmail = process.env.LEADS_TO_EMAIL || CONTACT_EMAIL;
   if (resendKey) {
     const from = process.env.LEADS_FROM_EMAIL || "Tailored Air <onboarding@resend.dev>";
     const response = await fetch("https://api.resend.com/emails", {
@@ -121,22 +122,22 @@ export async function POST(request: Request) {
     else failures.push(`webhook (${response.status})`);
   }
 
+  if (delivered.length === 0 && process.env.NODE_ENV !== "production") {
+    const dir = path.join(process.cwd(), "data");
+    await mkdir(dir, { recursive: true });
+    await appendFile(path.join(dir, "leads.jsonl"), `${JSON.stringify(lead)}\n`);
+    delivered.push("local-file");
+  }
+
   if (delivered.length === 0) {
-    if (process.env.NODE_ENV !== "production") {
-      const dir = path.join(process.cwd(), "data");
-      await mkdir(dir, { recursive: true });
-      await appendFile(path.join(dir, "leads.jsonl"), `${JSON.stringify(lead)}\n`);
-      delivered.push("local-file");
-    } else {
-      console.error("Lead not delivered; configure RESEND_API_KEY, FORMSPREE_FORM_ID, or LEADS_WEBHOOK_URL.", lead);
-      return NextResponse.json(
-        {
-          error:
-            "We could not send that request. Please call (720) 296-6008 and we will take care of you.",
-        },
-        { status: 503 },
-      );
-    }
+    console.error("Lead not delivered; configure RESEND_API_KEY, FORMSPREE_FORM_ID, or LEADS_WEBHOOK_URL.", lead);
+    return NextResponse.json(
+      {
+        error:
+          "We could not send that request. Please call (720) 296-6008 and we will take care of you.",
+      },
+      { status: 503 },
+    );
   }
 
   if (failures.length) {

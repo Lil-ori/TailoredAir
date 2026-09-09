@@ -1,8 +1,12 @@
 "use client";
 
+/* Nav and mobile menu only. Footer is src/components/site-footer.tsx — do not paste an older footer here. */
+
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useSiteUi } from "@/components/site-ui";
+import { services } from "@/lib/services";
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -10,9 +14,18 @@ export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navOn, setNavOn] = useState(false);
   const [navHidden, setNavHidden] = useState(false);
+  const [hvacMenuLocked, setHvacMenuLocked] = useState(false);
 
   useEffect(() => {
-    let lastScroll = 0;
+    setNavHidden(false);
+    setHvacMenuLocked(false);
+    setMenuOpen(false);
+    document.body.style.overflow = "";
+    setNavOn(window.scrollY > 10);
+  }, [pathname]);
+
+  useEffect(() => {
+    let lastScroll = window.scrollY;
 
     const onScroll = () => {
       const current = window.scrollY;
@@ -30,7 +43,7 @@ export function SiteNav() {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   function closeMenu() {
     setMenuOpen(false);
@@ -50,27 +63,45 @@ export function SiteNav() {
           />
         </a>
         <ul className="nav-links">
-          <li>
-            <a href="/#svc">HVAC Services</a>
+          <li
+            className={hvacMenuLocked ? "dropdown dropdown-closed" : "dropdown"}
+            onMouseLeave={() => setHvacMenuLocked(false)}
+          >
+            <a
+              href="/#svc"
+              onClick={() => {
+                setHvacMenuLocked(true);
+              }}
+            >
+              HVAC Services
+            </a>
+            <div className="dropdown-menu">
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className={pathname === `/services/${service.slug}` ? "is-active" : undefined}
+                >
+                  {service.navLabel}
+                </Link>
+              ))}
+            </div>
           </li>
           <li className="dropdown">
-            <a href="/about">About</a>
+            <Link href="/about">About</Link>
             <div className="dropdown-menu">
-              <a href="/about">About Us</a>
-              <a href="/why-choose-us">Why Choose Us</a>
-              <a href="/faq">FAQ</a>
-              <a href="/values">Our Values</a>
-              <a href="/blog">Blog</a>
-              <a href="/careers">Careers</a>
+              <Link href="/about">About Us</Link>
+              <Link href="/why-choose-us">Why Choose Us</Link>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/values">Our Values</Link>
+              <Link href="/blog">Blog</Link>
+              <Link href="/careers">Careers</Link>
             </div>
           </li>
           <li>
-            <a href="/#rev">Reviews</a>
-          </li>
-          <li>
-            <a href="/contact" className={pathname === "/contact" ? "is-active" : undefined}>
+            <Link href="/contact" className={pathname === "/contact" ? "is-active" : undefined}>
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
         <button
@@ -99,21 +130,25 @@ export function SiteNav() {
           <button type="button" className="mobile-menu-close" onClick={closeMenu} aria-label="Close menu">
             ✕
           </button>
-          <a href="/#svc" onClick={closeMenu}>
-            HVAC Services
-          </a>
-          <a href="/about" onClick={closeMenu}>
+          <div className="mobile-menu-group">
+            <a href="/#svc" onClick={closeMenu}>
+              HVAC Services
+            </a>
+            {services.map((service) => (
+              <Link key={service.slug} href={`/services/${service.slug}`} onClick={closeMenu}>
+                {service.navLabel}
+              </Link>
+            ))}
+          </div>
+          <Link href="/about" onClick={closeMenu}>
             About
-          </a>
-          <a href="/blog" onClick={closeMenu}>
+          </Link>
+          <Link href="/blog" onClick={closeMenu}>
             Blog
-          </a>
-          <a href="/#rev" onClick={closeMenu}>
-            Reviews
-          </a>
-          <a href="/contact" onClick={closeMenu}>
+          </Link>
+          <Link href="/contact" onClick={closeMenu}>
             Contact
-          </a>
+          </Link>
           <a href="tel:7202966008" className="mobile-phone">
             (720) 296-6008
           </a>
@@ -133,142 +168,4 @@ export function SiteNav() {
   );
 }
 
-export function SiteFooter() {
-  return (
-    <footer>
-      <div className="ft">
-        <div className="ft-brand">
-          <div className="ft-logo">
-            <a href="/">
-              <img
-                src="/images/logo.png"
-                alt="Tailored Air"
-                style={{ height: 76, width: "auto", display: "block" }}
-              />
-            </a>
-          </div>
-          <p>
-            A new standard in heating and cooling, tailored to your home, your business, and
-            your life. Honest service, fair pricing, and a team that treats every job like
-            it&apos;s our own house on the line.
-          </p>
-        </div>
-        <div className="ft-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/#svc">HVAC Services</a>
-            </li>
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-            <li>
-              <a href="/blog">Blog</a>
-            </li>
-            <li>
-              <a href="/contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-        <div className="ft-col">
-          <h4>Service Area</h4>
-          <ul>
-            <li>
-              <a href="/#area">Littleton, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Englewood, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Highlands Ranch</a>
-            </li>
-            <li>
-              <a href="/#area">Lakewood, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Denver Metro</a>
-            </li>
-          </ul>
-        </div>
-        <div className="ft-col">
-          <h4>Contact Us</h4>
-          <div className="ft-phone">(720) 296-6008</div>
-          <ul>
-            <li>
-              <a
-                href="https://www.facebook.com/people/Tailored-Air/61560839943549/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/tailoredaircolorado"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://maps.app.goo.gl/2PU5vhgZRs3mSjiT9"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Google
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <img
-            src="/images/asset-10-45ea3094a9a8ffa3.svg"
-            alt="Proudly Serving American Standard Products"
-            style={{ width: 200, height: "auto", display: "block" }}
-          />
-        </div>
-      </div>
-      <div className="ft-bot">
-        <span>
-          © 2026 Tailored Air LLC. All rights reserved.{" "}
-          <a href="/privacy" className="legal-link">
-            Privacy Policy
-          </a>{" "}
-          <a href="/terms" className="legal-link">
-            Terms &amp; Conditions
-          </a>
-        </span>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span
-            style={{
-              fontSize: 9,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,.25)",
-              fontWeight: 600,
-              lineHeight: 1,
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-          >
-            Powered By:
-          </span>
-          <img
-            src="/images/asset-11-637ec214f4179f28.png"
-            alt="Lilori"
-            style={{ width: 42, height: "auto", display: "block", opacity: 0.7, marginBottom: 2 }}
-          />
-        </div>
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,.25)", letterSpacing: ".04em" }}>
-          Littleton, CO &amp; Denver Metro Area
-        </span>
-      </div>
-    </footer>
-  );
-}
+export { SiteFooter } from "@/components/site-footer";

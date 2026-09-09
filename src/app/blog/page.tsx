@@ -1,12 +1,13 @@
 import { ComingSoon } from "@/components/coming-soon";
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Blog",
   description:
     "HVAC tips and news from Tailored Air. Our blog for Littleton and Denver metro homeowners is coming soon.",
-  alternates: { canonical: "/blog" },
-};
+  path: "/blog",
+  index: false,
+});
 
 export default function BlogPage() {
   return (
