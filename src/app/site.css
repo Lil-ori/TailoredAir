@@ -348,7 +348,7 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 }
 
 /* LEGAL PAGES */
-.subpage-inner{padding:88px 48px}
+.subpage-inner{padding:44px 48px 88px}
 
 
 
@@ -391,7 +391,7 @@ h2{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-weight:700;line-heig
 }
 @media (max-width: 600px) {
   .careers-col{padding:28px 20px}
-  .subpage-inner{padding:48px 16px}
+  .subpage-inner{padding:24px 16px 48px}
 }
 
 
