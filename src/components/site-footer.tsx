@@ -101,38 +101,22 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="ft-bot">
-        <span>
-          © 2026 Tailored Air LLC. All rights reserved.{" "}
-          <a href="/privacy" className="legal-link">
-            Privacy Policy
-          </a>{" "}
-          <a href="/terms" className="legal-link">
-            Terms &amp; Conditions
-          </a>
-        </span>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span
-            style={{
-              fontSize: 9,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,.25)",
-              fontWeight: 600,
-              lineHeight: 1,
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-          >
-            Powered By:
-          </span>
+        <span className="ft-bot-copy">© 2026 Tailored Air LLC. All rights reserved.</span>
+        <div className="ft-bot-credit">
+          <span>Powered By:</span>
           <img
             src="/images/asset-11-637ec214f4179f28.png"
             alt="Lilori"
             style={{ width: 42, height: "auto", display: "block", opacity: 0.7, marginBottom: 2 }}
           />
         </div>
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,.25)", letterSpacing: ".04em" }}>
-          Littleton, CO &amp; Denver Metro Area
+        <span className="ft-bot-legal">
+          <a href="/privacy" className="legal-link">
+            Privacy Policy
+          </a>
+          <a href="/terms" className="legal-link">
+            Terms &amp; Conditions
+          </a>
         </span>
       </div>
     </footer>
