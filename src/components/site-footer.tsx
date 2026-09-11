@@ -43,21 +43,11 @@ export function SiteFooter() {
         <div className="ft-col">
           <h4>Service Area</h4>
           <ul>
-            <li>
-              <a href="/#area">Littleton, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Englewood, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Highlands Ranch</a>
-            </li>
-            <li>
-              <a href="/#area">Lakewood, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Denver Metro</a>
-            </li>
+            <li>Littleton, CO</li>
+            <li>Englewood, CO</li>
+            <li>Highlands Ranch</li>
+            <li>Lakewood, CO</li>
+            <li>Denver Metro</li>
           </ul>
         </div>
         <div className="ft-col">
