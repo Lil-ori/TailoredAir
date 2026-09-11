@@ -101,15 +101,13 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="ft-bot">
-        <span>
-          © 2026 Tailored Air LLC. All rights reserved.{" "}
-          <a href="/privacy" className="legal-link">
-            Privacy Policy
-          </a>{" "}
-          <a href="/terms" className="legal-link">
-            Terms &amp; Conditions
-          </a>
-        </span>
+        <span>© 2026 Tailored Air LLC. All rights reserved.</span>
+        <a href="/privacy" className="legal-link">
+          Privacy Policy
+        </a>
+        <a href="/terms" className="legal-link">
+          Terms &amp; Conditions
+        </a>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span
             style={{
@@ -131,9 +129,6 @@ export function SiteFooter() {
             style={{ width: 42, height: "auto", display: "block", opacity: 0.7, marginBottom: 2 }}
           />
         </div>
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,.25)", letterSpacing: ".04em" }}>
-          Littleton, CO &amp; Denver Metro Area
-        </span>
       </div>
     </footer>
   );
