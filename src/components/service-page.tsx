@@ -4,7 +4,7 @@ export function ServicePageContent({ service }: { service: ServicePage }) {
   return (
     <div className="subpage-inner">
       <p className="eyebrow">HVAC Services</p>
-      <h2>{service.title}</h2>
+      <h1>{service.title}</h1>
       <div className="service-layout-frame">
         <div className="service-layout">
           <div className="service-layout-photo">
