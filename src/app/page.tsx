@@ -7,7 +7,7 @@ export const metadata = {
   ...pageMetadata({
     title: "Littleton HVAC Experts | Heating, Cooling & Air Quality",
     description:
-      "Tailored Air provides expert HVAC installation, repair & maintenance in Littleton, CO and the Denver Metro area. American Standard partner. 24/7 emergency service. Call (720) 296-6008.",
+      "Trusted HVAC repair, installation, and maintenance in Littleton and the Denver Metro area. Tailored Air delivers honest service and year-round comfort.",
     path: "/",
     ogTitle: "Tailored Air | Littleton HVAC Experts",
   }),

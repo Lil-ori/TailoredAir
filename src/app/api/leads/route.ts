@@ -16,12 +16,31 @@ type LeadBody = {
   company?: string;
 };
 
-function clean(value: unknown) {
-  return typeof value === "string" ? value.trim() : "";
+function clean(value: unknown, max = 200) {
+  if (typeof value !== "string") return "";
+  return value.replace(/[\0\r\n]+/g, " ").trim().slice(0, max);
 }
 
 function isValidEmail(value: string) {
   return !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function isHttpUrl(value: string) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+
+async function postJson(url: string, body: unknown, headers: Record<string, string>) {
+  return fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(12_000),
+  });
 }
 
 export async function POST(request: Request) {
@@ -32,18 +51,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  if (clean(body.company)) {
+  if (clean(body.company, 80)) {
     return NextResponse.json({ ok: true });
   }
 
   const lead = {
-    kind: clean(body.kind) || "estimate",
-    firstName: clean(body.firstName),
-    lastName: clean(body.lastName),
-    phone: clean(body.phone),
-    email: clean(body.email),
-    service: clean(body.service),
-    message: clean(body.message),
+    kind: clean(body.kind, 40) || "estimate",
+    firstName: clean(body.firstName, 80),
+    lastName: clean(body.lastName, 80),
+    phone: clean(body.phone, 40),
+    email: clean(body.email, 120),
+    service: clean(body.service, 120),
+    message: clean(body.message, 2000),
     submittedAt: new Date().toISOString(),
   };
 
@@ -76,50 +95,58 @@ export async function POST(request: Request) {
   const toEmail = process.env.LEADS_TO_EMAIL || CONTACT_EMAIL;
   if (resendKey) {
     const from = process.env.LEADS_FROM_EMAIL || "Tailored Air <onboarding@resend.dev>";
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${resendKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: [toEmail],
-        subject: `New ${lead.kind} request — ${lead.firstName} ${lead.lastName}`,
-        text,
-        reply_to: lead.email || undefined,
-      }),
-    });
-    if (response.ok) delivered.push("email");
-    else failures.push(`email (${response.status})`);
+    try {
+      const response = await postJson(
+        "https://api.resend.com/emails",
+        {
+          from,
+          to: [toEmail],
+          subject: `New ${lead.kind} request — ${lead.firstName} ${lead.lastName}`,
+          text,
+          reply_to: lead.email || undefined,
+        },
+        {
+          Authorization: `Bearer ${resendKey}`,
+          "Content-Type": "application/json",
+        },
+      );
+      if (response.ok) delivered.push("email");
+      else failures.push(`email (${response.status})`);
+    } catch {
+      failures.push("email (timeout)");
+    }
   }
 
-  const formspreeId = process.env.FORMSPREE_FORM_ID;
-  if (formspreeId) {
-    const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...lead,
-        _subject: `New ${lead.kind} request — ${lead.firstName} ${lead.lastName}`,
-      }),
-    });
-    if (response.ok) delivered.push("formspree");
-    else failures.push(`formspree (${response.status})`);
+  const formspreeId = clean(process.env.FORMSPREE_FORM_ID, 80);
+  if (formspreeId && /^[A-Za-z0-9]+$/.test(formspreeId)) {
+    try {
+      const response = await postJson(
+        `https://formspree.io/f/${formspreeId}`,
+        {
+          ...lead,
+          _subject: `New ${lead.kind} request — ${lead.firstName} ${lead.lastName}`,
+        },
+        {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      );
+      if (response.ok) delivered.push("formspree");
+      else failures.push(`formspree (${response.status})`);
+    } catch {
+      failures.push("formspree (timeout)");
+    }
   }
 
-  const webhook = process.env.LEADS_WEBHOOK_URL;
-  if (webhook) {
-    const response = await fetch(webhook, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(lead),
-    });
-    if (response.ok) delivered.push("webhook");
-    else failures.push(`webhook (${response.status})`);
+  const webhook = process.env.LEADS_WEBHOOK_URL?.trim() || "";
+  if (webhook && isHttpUrl(webhook)) {
+    try {
+      const response = await postJson(webhook, lead, { "Content-Type": "application/json" });
+      if (response.ok) delivered.push("webhook");
+      else failures.push(`webhook (${response.status})`);
+    } catch {
+      failures.push("webhook (timeout)");
+    }
   }
 
   if (delivered.length === 0 && process.env.NODE_ENV !== "production") {
@@ -130,7 +157,7 @@ export async function POST(request: Request) {
   }
 
   if (delivered.length === 0) {
-    console.error("Lead not delivered; configure RESEND_API_KEY, FORMSPREE_FORM_ID, or LEADS_WEBHOOK_URL.", lead);
+    console.error("Lead not delivered; configure RESEND_API_KEY, FORMSPREE_FORM_ID, or LEADS_WEBHOOK_URL.");
     return NextResponse.json(
       {
         error:

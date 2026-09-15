@@ -6,11 +6,12 @@ The original single-file HTML is now a Next.js site with real, indexable routes:
 
 - `/` home
 - `/about` `/why-choose-us` `/faq` `/values`
+- `/services/heating` `/services/cooling` `/services/air-quality` `/services/water-heaters` `/services/commercial` `/services/emergency`
 - `/blog` (coming soon)
 - `/careers`
 - `/contact` `/privacy` `/terms`
 
-Each page has its own title, description, and canonical URL. `sitemap.xml` and `robots.txt` are generated automatically. The live domain is **https://tailoredair.com** (`NEXT_PUBLIC_SITE_URL` if you ever need to override it).
+Each page has its own title, description, and canonical URL. Static `public/sitemap.xml` and `public/robots.txt` are served at `/sitemap.xml` and `/robots.txt`. The live domain is **https://tailoredair.com** (`NEXT_PUBLIC_SITE_URL` if you ever need to override it).
 
 ## Run locally
 
@@ -39,11 +40,12 @@ Local development also appends a copy to `data/leads.jsonl`.
 
 ## WordPress redirects
 
-Old paths 301 to the new site, including `/contact-us` → `/contact`, `/about-us` → `/about`, `/services` → `/#svc`, `/privacy-policy` → `/privacy`, and the previous WordPress logo URL.
+Old paths 301 to the new site, including `/contact-us` → `/contact`, `/about-us` → `/about`, `/privacy-policy` → `/privacy`, and the previous WordPress logo URL. `/services` opens the homepage services section.
 
 ## What works
 
 - Home, About, Why Choose Us, FAQ, Values, Careers, Contact, Privacy, Terms
+- HVAC service pages and nav dropdown
 - Blog placeholder
 - Schedule / free estimate form
 - Mobile menu and the original layout
