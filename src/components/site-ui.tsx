@@ -9,6 +9,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 type LightboxMode = "schedule" | "estimate";
 
@@ -152,25 +153,49 @@ export function SiteUiProvider({ children }: { children: ReactNode }) {
                     const form = event.currentTarget;
                     const data = new FormData(form);
                     try {
-                      const response = await fetch("/api/leads", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                          kind: lightbox,
-                          firstName: data.get("firstName"),
-                          lastName: data.get("lastName"),
-                          phone: data.get("phone"),
-                          email: data.get("email"),
-                          service: data.get("service"),
-                          message: data.get("message"),
-                          company: data.get("company"),
+                      const lead = {
+                        kind: lightbox,
+                        firstName: data.get("firstName"),
+                        lastName: data.get("lastName"),
+                        phone: data.get("phone"),
+                        email: data.get("email"),
+                        service: data.get("service"),
+                        message: data.get("message"),
+                        company: data.get("company"),
+                      };
+                      const inbox = CONTACT_EMAIL;
+                      const [inboxResult, apiResult] = await Promise.allSettled([
+                        fetch(`https://formsubmit.co/ajax/${inbox}`, {
+                          method: "POST",
+                          headers: {
+                            Accept: "application/json",
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({
+                            name: `${lead.firstName} ${lead.lastName}`.trim(),
+                            email: lead.email || inbox,
+                            phone: lead.phone,
+                            service: lead.service,
+                            message: lead.message || "(none)",
+                            kind: lead.kind,
+                            _subject: `New ${lead.kind} request — ${lead.firstName} ${lead.lastName}`,
+                            _template: "table",
+                            _captcha: false,
+                          }),
                         }),
-                      });
-                      const payload = (await response.json()) as { error?: string };
-                      if (!response.ok) {
+                        fetch("/api/leads", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify(lead),
+                        }),
+                      ]);
+                      const inboxOk =
+                        inboxResult.status === "fulfilled" && inboxResult.value.ok;
+                      const apiOk =
+                        apiResult.status === "fulfilled" && apiResult.value.ok;
+                      if (!inboxOk && !apiOk) {
                         setFormError(
-                          payload.error ||
-                            "We could not send that. Please call (720) 296-6008.",
+                          "We could not send that. Please call (720) 296-6008.",
                         );
                         return;
                       }

@@ -12,6 +12,12 @@ const routes = [
   "/contact",
   "/privacy",
   "/terms",
+  "/services/heating",
+  "/services/cooling",
+  "/services/air-quality",
+  "/services/water-heaters",
+  "/services/commercial",
+  "/services/emergency",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

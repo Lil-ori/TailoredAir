@@ -1,9 +1,11 @@
-import { getSiteUrl } from "@/lib/site";
+import { CONTACT_EMAIL, getSiteUrl } from "@/lib/site";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { SiteFooter, SiteNav } from "@/components/site-chrome";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteNav } from "@/components/site-chrome";
 import { SiteUiProvider } from "@/components/site-ui";
 import "./site.css";
+import "./footer.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Tailored Air",
   },
   description:
-    "Tailored Air provides expert HVAC installation, repair & maintenance in Littleton, CO and the Denver Metro area. American Standard partner. 24/7 emergency service. Call (720) 296-6008.",
+    "Trusted HVAC repair, installation, and maintenance in Littleton and the Denver Metro area. Tailored Air delivers honest service and year-round comfort.",
   keywords: [
     "HVAC Littleton CO",
     "heating and cooling Littleton",
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     url: `${site}/`,
     title: "Tailored Air | Littleton HVAC Experts",
     description:
-      "Expert HVAC installation, repair & maintenance in Littleton, CO and the Denver Metro area. American Standard partner. Call (720) 296-6008.",
+      "Trusted HVAC repair, installation, and maintenance in Littleton and the Denver Metro area. Tailored Air delivers honest service and year-round comfort.",
     images: [`${site}/images/logo.png`],
     locale: "en_US",
     siteName: "Tailored Air",
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tailored Air | Littleton HVAC Experts",
     description:
-      "Expert HVAC installation, repair & maintenance in Littleton, CO. American Standard partner. 24/7 emergency service.",
+      "Trusted HVAC repair, installation, and maintenance in Littleton and the Denver Metro area. Tailored Air delivers honest service and year-round comfort.",
     images: [`${site}/images/logo.png`],
   },
   icons: {
@@ -67,7 +69,7 @@ const jsonLd = {
       url: site,
       logo: `${site}/images/logo.png`,
       telephone: "+17202966008",
-      email: "hello@tailoredair.com",
+      email: CONTACT_EMAIL,
       address: {
         "@type": "PostalAddress",
         addressLocality: "Littleton",
