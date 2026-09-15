@@ -1,7 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
 import { useSiteUi } from "@/components/site-ui";
 
 export function SiteNav() {
@@ -10,6 +11,12 @@ export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navOn, setNavOn] = useState(false);
   const [navHidden, setNavHidden] = useState(false);
+  const [menuPath, setMenuPath] = useState(pathname);
+
+  if (pathname !== menuPath) {
+    setMenuPath(pathname);
+    setMenuOpen(false);
+  }
 
   useEffect(() => {
     let lastScroll = 0;
@@ -32,45 +39,60 @@ export function SiteNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  function closeMenu() {
+  const closeMenu = useCallback(() => {
     setMenuOpen(false);
-    document.body.style.overflow = "";
-  }
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMenu();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen, closeMenu]);
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: `#nav{background:rgba(255,255,255,.12)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(255,255,255,.15)!important}#nav.on{background:rgba(255,255,255,.18)!important;border-color:rgba(255,255,255,.2)!important}` }} />
 
       <nav id="nav" className={navOn ? "on" : undefined} style={{ transform: navHidden ? "translateY(-100%)" : "translateY(0)" }}>
-        <a className="logo" href="/" title="Tailored Air home">
+        <Link className="logo" href="/" title="Tailored Air home">
           <img
             src="/images/logo.png"
             alt="Tailored Air"
             style={{ height: 76, width: "auto", display: "block" }}
           />
-        </a>
+        </Link>
         <ul className="nav-links">
           <li>
-            <a href="/#svc">HVAC Services</a>
+            <Link href="/#svc">HVAC Services</Link>
           </li>
           <li className="dropdown">
-            <a href="/about">About</a>
+            <Link href="/about">About</Link>
             <div className="dropdown-menu">
-              <a href="/about">About Us</a>
-              <a href="/why-choose-us">Why Choose Us</a>
-              <a href="/faq">FAQ</a>
-              <a href="/values">Our Values</a>
-              <a href="/blog">Blog</a>
-              <a href="/careers">Careers</a>
+              <Link href="/about">About Us</Link>
+              <Link href="/why-choose-us">Why Choose Us</Link>
+              <Link href="/faq">FAQ</Link>
+              <Link href="/values">Our Values</Link>
+              <Link href="/blog">Blog</Link>
+              <Link href="/careers">Careers</Link>
             </div>
           </li>
           <li>
-            <a href="/#rev">Reviews</a>
+            <Link href="/#rev">Reviews</Link>
           </li>
           <li>
-            <a href="/contact" className={pathname === "/contact" ? "is-active" : undefined}>
+            <Link href="/contact" className={pathname === "/contact" ? "is-active" : undefined}>
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
         <button
@@ -78,9 +100,9 @@ export function SiteNav() {
           type="button"
           className="menu-btn"
           aria-label="Menu"
+          aria-expanded={menuOpen}
           onClick={() => {
             setMenuOpen(true);
-            document.body.style.overflow = "hidden";
           }}
         >
           <span />
@@ -99,21 +121,21 @@ export function SiteNav() {
           <button type="button" className="mobile-menu-close" onClick={closeMenu} aria-label="Close menu">
             ✕
           </button>
-          <a href="/#svc" onClick={closeMenu}>
+          <Link href="/#svc" onClick={closeMenu}>
             HVAC Services
-          </a>
-          <a href="/about" onClick={closeMenu}>
+          </Link>
+          <Link href="/about" onClick={closeMenu}>
             About
-          </a>
-          <a href="/blog" onClick={closeMenu}>
+          </Link>
+          <Link href="/blog" onClick={closeMenu}>
             Blog
-          </a>
-          <a href="/#rev" onClick={closeMenu}>
+          </Link>
+          <Link href="/#rev" onClick={closeMenu}>
             Reviews
-          </a>
-          <a href="/contact" onClick={closeMenu}>
+          </Link>
+          <Link href="/contact" onClick={closeMenu}>
             Contact
-          </a>
+          </Link>
           <a href="tel:7202966008" className="mobile-phone">
             (720) 296-6008
           </a>
@@ -139,13 +161,13 @@ export function SiteFooter() {
       <div className="ft">
         <div className="ft-brand">
           <div className="ft-logo">
-            <a href="/">
+            <Link href="/">
               <img
                 src="/images/logo.png"
                 alt="Tailored Air"
                 style={{ height: 76, width: "auto", display: "block" }}
               />
-            </a>
+            </Link>
           </div>
           <p>
             A new standard in heating and cooling, tailored to your home, your business, and
@@ -157,19 +179,19 @@ export function SiteFooter() {
           <h4>Quick Links</h4>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <a href="/#svc">HVAC Services</a>
+              <Link href="/#svc">HVAC Services</Link>
             </li>
             <li>
-              <a href="/about">About Us</a>
+              <Link href="/about">About Us</Link>
             </li>
             <li>
-              <a href="/blog">Blog</a>
+              <Link href="/blog">Blog</Link>
             </li>
             <li>
-              <a href="/contact">Contact</a>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
         </div>
@@ -177,25 +199,27 @@ export function SiteFooter() {
           <h4>Service Area</h4>
           <ul>
             <li>
-              <a href="/#area">Littleton, CO</a>
+              <Link href="/#area">Littleton, CO</Link>
             </li>
             <li>
-              <a href="/#area">Englewood, CO</a>
+              <Link href="/#area">Englewood, CO</Link>
             </li>
             <li>
-              <a href="/#area">Highlands Ranch</a>
+              <Link href="/#area">Highlands Ranch</Link>
             </li>
             <li>
-              <a href="/#area">Lakewood, CO</a>
+              <Link href="/#area">Lakewood, CO</Link>
             </li>
             <li>
-              <a href="/#area">Denver Metro</a>
+              <Link href="/#area">Denver Metro</Link>
             </li>
           </ul>
         </div>
         <div className="ft-col">
           <h4>Contact Us</h4>
-          <div className="ft-phone">(720) 296-6008</div>
+          <div className="ft-phone">
+            <a href="tel:7202966008">(720) 296-6008</a>
+          </div>
           <ul>
             <li>
               <a
@@ -237,12 +261,12 @@ export function SiteFooter() {
       <div className="ft-bot">
         <span>
           © 2026 Tailored Air LLC. All rights reserved.{" "}
-          <a href="/privacy" className="legal-link">
+          <Link href="/privacy" className="legal-link">
             Privacy Policy
-          </a>{" "}
-          <a href="/terms" className="legal-link">
+          </Link>{" "}
+          <Link href="/terms" className="legal-link">
             Terms &amp; Conditions
-          </a>
+          </Link>
         </span>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span

@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useId,
   useMemo,
   useState,
   type ReactNode,
@@ -28,6 +29,7 @@ export function useSiteUi() {
 }
 
 export function SiteUiProvider({ children }: { children: ReactNode }) {
+  const formId = useId();
   const [lightbox, setLightbox] = useState<LightboxMode | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -74,6 +76,21 @@ export function SiteUiProvider({ children }: { children: ReactNode }) {
   }, [openEstimate, openSchedule]);
 
   useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeLightbox();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [lightbox, closeLightbox]);
+
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  useEffect(() => {
     const onFaqClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       const btn = target?.closest(".faq-q");
@@ -82,8 +99,14 @@ export function SiteUiProvider({ children }: { children: ReactNode }) {
       const list = item?.closest(".faq-list");
       if (!item || !list) return;
       const isOpen = item.classList.contains("open");
-      list.querySelectorAll(".faq-item.open").forEach((i) => i.classList.remove("open"));
-      if (!isOpen) item.classList.add("open");
+      list.querySelectorAll(".faq-item.open").forEach((openItem) => {
+        openItem.classList.remove("open");
+        openItem.querySelector(".faq-q")?.setAttribute("aria-expanded", "false");
+      });
+      if (!isOpen) {
+        item.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+      }
     };
     document.addEventListener("click", onFaqClick);
     return () => document.removeEventListener("click", onFaqClick);
@@ -115,12 +138,23 @@ export function SiteUiProvider({ children }: { children: ReactNode }) {
       {lightbox ? (
         <div
           className="lightbox-overlay open"
+          role="presentation"
           onClick={(event) => {
             if (event.target === event.currentTarget) closeLightbox();
           }}
         >
-          <div className="lightbox">
-            <button type="button" className="lightbox-close" onClick={closeLightbox}>
+          <div
+            className="lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={`${formId}-title`}
+          >
+            <button
+              type="button"
+              className="lightbox-close"
+              onClick={closeLightbox}
+              aria-label="Close form"
+            >
               ✕
             </button>
             {submitted ? (
@@ -128,7 +162,7 @@ export function SiteUiProvider({ children }: { children: ReactNode }) {
                 <p className="eyebrow" style={{ marginBottom: 10 }}>
                   Request received
                 </p>
-                <h3>We&apos;ll call you back</h3>
+                <h3 id={`${formId}-title`}>We&apos;ll call you back</h3>
                 <p>
                   Thanks for reaching out to Tailored Air. A teammate will contact you
                   within one business day. For emergencies, call (720) 296-6008 anytime.
@@ -142,7 +176,7 @@ export function SiteUiProvider({ children }: { children: ReactNode }) {
                 <p className="eyebrow" style={{ marginBottom: 10 }}>
                   {copy.eyebrow}
                 </p>
-                <h3>{copy.title}</h3>
+                <h3 id={`${formId}-title`}>{copy.title}</h3>
                 <p>{copy.subtitle}</p>
                 <form
                   onSubmit={async (event) => {
@@ -166,7 +200,12 @@ export function SiteUiProvider({ children }: { children: ReactNode }) {
                           company: data.get("company"),
                         }),
                       });
-                      const payload = (await response.json()) as { error?: string };
+                      let payload: { error?: string } = {};
+                      try {
+                        payload = (await response.json()) as { error?: string };
+                      } catch {
+                        payload = {};
+                      }
                       if (!response.ok) {
                         setFormError(
                           payload.error ||
@@ -194,27 +233,27 @@ export function SiteUiProvider({ children }: { children: ReactNode }) {
                   />
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="first-name">First Name</label>
-                      <input id="first-name" name="firstName" type="text" placeholder="John" required />
+                      <label htmlFor={`${formId}-first-name`}>First Name</label>
+                      <input id={`${formId}-first-name`} name="firstName" type="text" placeholder="John" required />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="last-name">Last Name</label>
-                      <input id="last-name" name="lastName" type="text" placeholder="Smith" required />
+                      <label htmlFor={`${formId}-last-name`}>Last Name</label>
+                      <input id={`${formId}-last-name`} name="lastName" type="text" placeholder="Smith" required />
                     </div>
                   </div>
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="phone">Phone</label>
-                      <input id="phone" name="phone" type="tel" placeholder="(720) 555-0000" required />
+                      <label htmlFor={`${formId}-phone`}>Phone</label>
+                      <input id={`${formId}-phone`} name="phone" type="tel" placeholder="(720) 555-0000" required />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="email">Email</label>
-                      <input id="email" name="email" type="email" placeholder="john@email.com" />
+                      <label htmlFor={`${formId}-email`}>Email</label>
+                      <input id={`${formId}-email`} name="email" type="email" placeholder="john@email.com" />
                     </div>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="service">Service Needed</label>
-                    <select id="service" name="service" defaultValue="" required>
+                    <label htmlFor={`${formId}-service`}>Service Needed</label>
+                    <select id={`${formId}-service`} name="service" defaultValue="" required>
                       <option value="" disabled>
                         Select a service...
                       </option>
@@ -229,8 +268,8 @@ export function SiteUiProvider({ children }: { children: ReactNode }) {
                     </select>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="message">Message (optional)</label>
-                    <textarea id="message" name="message" placeholder="Tell us a bit about your situation..." />
+                    <label htmlFor={`${formId}-message`}>Message (optional)</label>
+                    <textarea id={`${formId}-message`} name="message" placeholder="Tell us a bit about your situation..." />
                   </div>
                   {formError ? <p className="form-error">{formError}</p> : null}
                   <button className="form-submit" type="submit" disabled={submitting}>
