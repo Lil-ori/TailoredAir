@@ -33,7 +33,16 @@ export function SiteFooter() {
               <a href="/about">About Us</a>
             </li>
             <li>
-              <a href="/blog">Blog</a>
+              <a href="/why-choose-us">Why Choose Us</a>
+            </li>
+            <li>
+              <a href="/faq">FAQ</a>
+            </li>
+            <li>
+              <a href="/values">Our Values</a>
+            </li>
+            <li>
+              <a href="/careers">Careers</a>
             </li>
             <li>
               <a href="/contact">Contact</a>
