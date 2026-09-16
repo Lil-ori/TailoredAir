@@ -1,25 +1,16 @@
 import type { MetadataRoute } from "next";
-import { getSiteUrl } from "@/lib/site";
+import { publicPages } from "@/lib/public-pages";
+import { getRequestOrigin } from "@/lib/request-origin";
+import { absoluteUrl } from "@/lib/site";
 
-const routes = [
-  "",
-  "/about",
-  "/why-choose-us",
-  "/faq",
-  "/values",
-  "/blog",
-  "/careers",
-  "/contact",
-  "/privacy",
-  "/terms",
-];
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const origin = await getRequestOrigin();
+  const lastModified = new Date("2026-09-16");
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const site = getSiteUrl();
-  return routes.map((route) => ({
-    url: `${site}${route || "/"}`,
-    lastModified: new Date("2026-06-01"),
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : 0.7,
+  return publicPages.map((page) => ({
+    url: absoluteUrl(page.path, origin),
+    lastModified,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
   }));
 }

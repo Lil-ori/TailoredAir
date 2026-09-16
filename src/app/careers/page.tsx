@@ -1,17 +1,19 @@
-import { ComingSoon } from "@/components/coming-soon";
-import type { Metadata } from "next";
+import { HtmlBlock } from "@/components/html-block";
+import { readPageHtml } from "@/lib/html";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Careers",
   description:
-    "Join the Tailored Air team in Littleton, CO. HVAC career openings will be posted here.",
-  alternates: { canonical: "/careers" },
-};
+    "Join the Tailored Air team in Littleton, CO. We are always looking for HVAC installers and technicians who take pride in their work.",
+  path: "/careers",
+  ogTitle: "Careers at Tailored Air",
+});
 
 export default function CareersPage() {
   return (
     <main className="inner-page">
-      <ComingSoon title="Careers" />
+      <HtmlBlock html={readPageHtml("careers-content.html")} />
     </main>
   );
 }
