@@ -12,7 +12,11 @@ export const metadata = pageMetadata({
 export default function BlogPage() {
   return (
     <main className="inner-page">
-      <ComingSoon title="Blog" />
+      <div className="subpage-inner">
+        <p className="eyebrow">News</p>
+        <h1>Blog</h1>
+        <ComingSoon title="Blog" />
+      </div>
     </main>
   );
 }

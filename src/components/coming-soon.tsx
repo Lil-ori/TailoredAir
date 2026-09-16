@@ -1,7 +1,6 @@
 export function ComingSoon({ title }: { title: string }) {
   return (
     <div className="coming-soon">
-      <h1 className="sr-only">{title}</h1>
       <svg
         width="100%"
         viewBox="0 0 600 420"
