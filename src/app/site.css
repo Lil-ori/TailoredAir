@@ -373,8 +373,7 @@ h2,.subpage-inner > h1{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-
 /* CAREERS */
 .careers-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:56px}
 .careers-col{background:var(--bg2);padding:48px;display:flex;flex-direction:column;justify-content:flex-start}
-.careers-col-title{margin-bottom:16px}
-.careers-col-title-spaced{margin-bottom:24px}
+h2.careers-col-title{font-family:var(--f);font-size:28px;font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
 .careers-col-title-spaced{margin-bottom:24px}
 .careers-copy{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300}
 .careers-resume{margin-top:32px;padding:24px;background:var(--bg3);border-left:3px solid var(--green)}
