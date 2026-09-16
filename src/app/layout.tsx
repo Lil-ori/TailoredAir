@@ -22,7 +22,7 @@ const site = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(site),
   title: {
-    default: "Tailored Air | Littleton HVAC Experts | Heating, Cooling & Air Quality",
+    default: "Littleton HVAC Heating & Cooling | Tailored Air",
     template: "%s | Tailored Air",
   },
   description:
