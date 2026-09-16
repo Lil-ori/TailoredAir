@@ -94,7 +94,6 @@ export function SiteNav() {
               <Link href="/why-choose-us">Why Choose Us</Link>
               <Link href="/faq">FAQ</Link>
               <Link href="/values">Our Values</Link>
-              <Link href="/blog">Blog</Link>
               <Link href="/careers">Careers</Link>
             </div>
           </li>
@@ -142,9 +141,6 @@ export function SiteNav() {
           </div>
           <Link href="/about" onClick={closeMenu}>
             About
-          </Link>
-          <Link href="/blog" onClick={closeMenu}>
-            Blog
           </Link>
           <Link href="/contact" onClick={closeMenu}>
             Contact
