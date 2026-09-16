@@ -9,7 +9,7 @@ The original single-file HTML is now a Next.js site with real, indexable routes:
 - `/blog` `/careers` (coming soon)
 - `/contact` `/privacy` `/terms`
 
-Each page has its own title, description, and canonical URL. `sitemap.xml` and `robots.txt` are generated automatically. The live domain is **https://tailoredair.com** (`NEXT_PUBLIC_SITE_URL` if you ever need to override it).
+Each page has its own title, description, and canonical URL. `public/sitemap.xml` and `public/robots.txt` are served at `/sitemap.xml` and `/robots.txt`. The live domain is **https://tailoredair.com**.
 
 ## Run locally
 

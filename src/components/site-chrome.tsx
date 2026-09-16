@@ -60,7 +60,6 @@ export function SiteNav() {
               <a href="/why-choose-us">Why Choose Us</a>
               <a href="/faq">FAQ</a>
               <a href="/values">Our Values</a>
-              <a href="/blog">Blog</a>
               <a href="/careers">Careers</a>
             </div>
           </li>
@@ -104,9 +103,6 @@ export function SiteNav() {
           </a>
           <a href="/about" onClick={closeMenu}>
             About
-          </a>
-          <a href="/blog" onClick={closeMenu}>
-            Blog
           </a>
           <a href="/#rev" onClick={closeMenu}>
             Reviews
@@ -164,9 +160,6 @@ export function SiteFooter() {
             </li>
             <li>
               <a href="/about">About Us</a>
-            </li>
-            <li>
-              <a href="/blog">Blog</a>
             </li>
             <li>
               <a href="/contact">Contact</a>
