@@ -7,8 +7,8 @@ export function getSiteUrl() {
   return raw.replace(/\/$/, "");
 }
 
-export function absoluteUrl(path = "/") {
-  const site = getSiteUrl();
+export function absoluteUrl(path = "/", origin = getSiteUrl()) {
+  const site = origin.replace(/\/$/, "");
   if (!path || path === "/") return `${site}/`;
   return `${site}${path.startsWith("/") ? path : `/${path}`}`;
 }
