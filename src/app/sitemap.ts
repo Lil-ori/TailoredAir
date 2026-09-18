@@ -5,7 +5,7 @@ import { absoluteUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const origin = await getRequestOrigin();
-  const lastModified = new Date("2026-09-16");
+  const lastModified = new Date();
 
   return publicPages.map((page) => ({
     url: absoluteUrl(page.path, origin),

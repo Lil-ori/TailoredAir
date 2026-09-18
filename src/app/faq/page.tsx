@@ -7,7 +7,7 @@ import { faqJsonLd, pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "FAQ | HVAC Questions in Littleton, CO",
   description:
-    "Answers about Tailored Air service areas, emergency HVAC repair, free estimates, American Standard equipment, maintenance, financing, and licensing.",
+    "Answers about Tailored Air service areas across Littleton, Highlands Ranch, Englewood, Lakewood, Centennial, and Ken Caryl, plus emergency HVAC repair, free estimates, and licensing.",
   path: "/faq",
 });
 

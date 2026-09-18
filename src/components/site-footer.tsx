@@ -1,18 +1,20 @@
 /* Site footer lives only in this file. Homepage / nav / page work must not paste an older footer into site-chrome.tsx. */
 
+import Link from "next/link";
+
 export function SiteFooter() {
   return (
     <footer>
       <div className="ft">
         <div className="ft-brand">
           <div className="ft-logo">
-            <a href="/">
+            <Link href="/">
               <img
                 src="/images/logo.png"
                 alt="Tailored Air"
                 style={{ height: 76, width: "auto", display: "block" }}
               />
-            </a>
+            </Link>
           </div>
           <p>
             A new standard in heating and cooling, tailored to your home, your business, and
@@ -24,32 +26,69 @@ export function SiteFooter() {
           <h4>Quick Links</h4>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <a href="/#svc">HVAC Services</a>
+              <Link href="/#svc">HVAC Services</Link>
             </li>
             <li>
-              <a href="/about">About Us</a>
+              <Link href="/about">About Us</Link>
             </li>
             <li>
-              <a href="/contact">Contact</a>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
         </div>
-        <div className="ft-col">
+        <div className="ft-col ft-area">
           <h4>Service Area</h4>
-          <ul>
-            <li>Littleton, CO</li>
-            <li>Englewood, CO</li>
-            <li>Highlands Ranch</li>
-            <li>Lakewood, CO</li>
-            <li>Denver Metro</li>
-          </ul>
+          <div className="ft-area-grid">
+            <ul>
+              <li>
+                <Link href="/locations/littleton-co">Littleton, CO</Link>
+              </li>
+              <li>
+                <Link href="/locations/englewood">Englewood, CO</Link>
+              </li>
+              <li>
+                <Link href="/locations/highlands-ranch">Highlands Ranch</Link>
+              </li>
+              <li>
+                <Link href="/locations/lakewood">Lakewood, CO</Link>
+              </li>
+              <li>
+                <Link href="/locations/centennial">Centennial, CO</Link>
+              </li>
+              <li>
+                <Link href="/locations/ken-caryl">Ken Caryl, CO</Link>
+              </li>
+            </ul>
+            <ul className="ft-area-plain">
+              <li>
+                <span>Columbine, CO</span>
+              </li>
+              <li>
+                <span>Southglenn, CO</span>
+              </li>
+              <li>
+                <span>Westminster, CO</span>
+              </li>
+              <li>
+                <span>Sheridan, CO</span>
+              </li>
+              <li>
+                <span>Greenwood Village, CO</span>
+              </li>
+              <li>
+                <span>Denver, CO</span>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="ft-col">
           <h4>Contact Us</h4>
-          <div className="ft-phone">(720) 296-6008</div>
+          <div className="ft-phone">
+            <a href="tel:7202966008">(720) 296-6008</a>
+          </div>
           <ul>
             <li>
               <a
@@ -108,12 +147,12 @@ export function SiteFooter() {
           />
         </div>
         <span className="ft-bot-legal">
-          <a href="/privacy" className="legal-link">
+          <Link href="/privacy" className="legal-link">
             Privacy Policy
-          </a>
-          <a href="/terms" className="legal-link">
+          </Link>
+          <Link href="/terms" className="legal-link">
             Terms &amp; Conditions
-          </a>
+          </Link>
         </span>
       </div>
     </footer>
