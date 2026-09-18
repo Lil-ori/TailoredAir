@@ -13,6 +13,13 @@
 .service-layout-name{font-family:var(--f);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 .service-layout-item p{color:var(--dim);font-size:12px;line-height:1.5;font-weight:300;margin:0}
 
+.service-emergency{margin-top:28px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.service-emergency-serve{color:var(--white);font-size:15px;line-height:1.7;font-weight:500;max-width:720px;margin:0}
+.service-emergency-phone{display:inline-block;font-family:var(--f);font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--white);text-decoration:none;letter-spacing:.01em;line-height:1.1}
+.service-emergency-phone:hover{color:var(--green)}
+.service-emergency-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;flex-shrink:0}
+.commit-cta p a[href^="tel:"]{color:var(--white);text-decoration:underline;text-underline-offset:3px}
+
 @media (max-width: 900px) {
   .service-layout-frame{aspect-ratio:auto;height:auto}
   .service-layout{position:static;width:auto;height:auto;transform:none;grid-template-columns:1fr}
@@ -21,4 +28,10 @@
   .service-layout-item{padding:22px 24px;overflow:visible}
   .service-layout-intro p{font-size:15px;line-height:1.8}
   .service-layout-item p{font-size:13px;line-height:1.7}
+}
+
+@media (max-width: 600px) {
+  .service-emergency-actions{width:100%}
+  .service-emergency-actions .btn-dk,
+  .service-emergency-actions .btn-w{width:100%;text-align:center}
 }

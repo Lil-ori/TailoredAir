@@ -1,0 +1,27 @@
+/* Location pages. Loaded after site.css so homepage rules cannot replace these. */
+
+.location-intro{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin-top:12px;max-width:760px}
+.location-intro p{margin:0 0 16px}
+.location-intro p:last-child{margin-bottom:0}
+.location-svc{margin-top:56px}
+.location-local{display:grid;grid-template-columns:1.4fr 1fr;gap:1px;background:var(--line);margin-top:56px;border:1px solid var(--line)}
+.location-local-copy{background:var(--bg2);padding:40px 44px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.location-local-copy p{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin:0}
+.location-local-aside{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.location-local-aside .stat{background:var(--bg3);padding:28px 22px;text-align:center;margin:0;border:none}
+.location-cta-title{font-family:var(--f);font-size:18px;font-weight:700;color:var(--white);margin-bottom:6px}
+.location-cta-sub{color:var(--dim);font-size:13px;font-weight:300;margin:0 0 16px}
+.location-cta-phone{display:inline-block;font-family:var(--f);font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--white);text-decoration:none;letter-spacing:.01em;line-height:1.1}
+.location-cta-phone:hover{color:var(--green)}
+.location-cta-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;flex-shrink:0}
+
+@media (max-width: 900px) {
+  .location-local{grid-template-columns:1fr}
+  .location-local-copy{padding:32px 24px}
+}
+
+@media (max-width: 600px) {
+  .location-cta-actions{width:100%}
+  .location-cta-actions .btn-dk,
+  .location-cta-actions .btn-w{width:100%;text-align:center}
+}

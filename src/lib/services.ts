@@ -26,15 +26,15 @@ export const services: ServicePage[] = [
     description:
       "Furnace, boiler, and heat pump installation, repair, and seasonal maintenance for Littleton and the Denver metro area.",
     intro:
-      "Colorado winters do not leave much room for a system that is almost working. Tailored Air installs, repairs, and maintains the heating equipment that keeps Littleton and Denver metro homes comfortable when temperatures drop, with honest recommendations and workmanship we would stand behind in our own houses.",
+      "Colorado winters do not leave much room for a system that is almost working. Tailored Air installs, repairs, and maintains the heating equipment that keeps Littleton, CO homes warm through Colorado winters, with the same honest recommendations for Highlands Ranch, Englewood, and Lakewood families.",
     points: [
       {
         title: "Furnaces",
-        body: "Repair, replacement, and high-efficiency upgrades for gas furnaces, including the diagnostics that tell you whether a fix or a new system is the smarter spend.",
+        body: "Repair, replacement, and high-efficiency upgrades for gas furnaces in Littleton homes, including the diagnostics that tell you whether a fix or a new system is the smarter spend.",
       },
       {
         title: "Boilers",
-        body: "Hydronic heat done right: leak tracing, circulator issues, and replacements sized for the home instead of whatever is sitting on the truck.",
+        body: "Hydronic heat done right across the Denver Metro: leak tracing, circulator issues, and replacements sized for the home instead of whatever is sitting on the truck.",
       },
       {
         title: "Heat pumps",
@@ -42,7 +42,7 @@ export const services: ServicePage[] = [
       },
       {
         title: "Seasonal maintenance",
-        body: "Tune-ups before the first hard freeze so you are not finding a problem at 9 p.m. on the coldest night of the year.",
+        body: "Tune-ups for Littleton, Highlands Ranch, Englewood, and Lakewood homes before the first hard freeze so you are not finding a problem at 9 p.m. on the coldest night of the year.",
       },
     ],
   },
@@ -56,23 +56,23 @@ export const services: ServicePage[] = [
     description:
       "Central air, ductless mini-splits, and smart thermostat upgrades for Littleton and the Denver metro area.",
     intro:
-      "Denver summers can sneak up on a house that was built for winter. We design and service cooling systems that keep indoor temperatures even, keep humidity in check, and do not send the electric bill through the roof.",
+      "Colorado's demanding summers can sneak up on a house that was built for winter. We design and service cooling systems that keep Littleton homeowners comfortable, keep humidity in check, and do not send the electric bill through the roof.",
     points: [
       {
         title: "Central air",
-        body: "Installation, repair, and replacement of central AC systems matched to your ductwork, insulation, and how the house actually lives, not a one-size square-footage guess.",
+        body: "Installation, repair, and replacement of central AC systems for Littleton, CO homes, matched to your ductwork, insulation, and how the house actually lives, not a one-size square-footage guess.",
       },
       {
         title: "Ductless mini-splits",
-        body: "Room-by-room comfort for additions, finished basements, and homes where running new ductwork would be more disruption than it is worth.",
+        body: "Room-by-room comfort across the Denver Metro for additions, finished basements, and homes where running new ductwork would be more disruption than it is worth.",
       },
       {
         title: "Smart thermostats",
-        body: "Upgrades that make an existing system easier to live with, from scheduling to remote control, without a pile of unused features.",
+        body: "Upgrades that make an existing system easier for Littleton homeowners to live with, from scheduling to remote control, without a pile of unused features.",
       },
       {
         title: "Seasonal cooling service",
-        body: "Spring checkups so the first 90-degree day is not when you find out the condenser is not going to keep up.",
+        body: "Spring checkups before Colorado's demanding summers so the first 90-degree day is not when you find out the condenser is not going to keep up.",
       },
     ],
   },
@@ -176,23 +176,23 @@ export const services: ServicePage[] = [
     description:
       "24/7 emergency HVAC repair in Littleton, CO and the Denver metro area. Call (720) 296-6008.",
     intro:
-      "Heat that dies at midnight and AC that quits on a holiday weekend are not scheduling problems. Tailored Air offers 24/7 emergency repair so you talk to a real person, get a tech moving, and get the system back to safe and livable as fast as the job allows.",
+      "When heat dies at midnight in Littleton, CO or AC quits on a holiday weekend in Highlands Ranch, that is not a scheduling problem. Tailored Air offers 24/7 emergency HVAC repair across Englewood, Lakewood, Centennial, and Ken Caryl so you talk to a real person, get a tech moving, and get the system back to safe and livable as fast as the job allows.",
     points: [
       {
         title: "Anytime response",
-        body: "Call (720) 296-6008 day or night. HVAC emergencies do not wait for business hours, and neither do we.",
+        body: "Littleton families call (720) 296-6008 day or night. HVAC emergencies do not wait for business hours, and neither do we.",
       },
       {
         title: "No call-center runaround",
-        body: "You reach the team that will actually show up, not a switchboard reading from a script.",
+        body: "Highlands Ranch and Englewood homeowners reach the team that will actually show up, not a switchboard reading from a script.",
       },
       {
         title: "Honest triage",
-        body: "We stabilize what we can on the first visit and tell you plainly if a part, a return trip, or a replacement is the right next step.",
+        body: "Lakewood and Centennial emergencies get a straight answer. We stabilize what we can on the first visit and tell you plainly if a part, a return trip, or a replacement is the right next step.",
       },
       {
         title: "After the emergency",
-        body: "Once you are comfortable again, we can talk maintenance so the next failure is less likely to land at 2 a.m.",
+        body: "Once Ken Caryl neighbors, and everyone we serve, are comfortable again, we can talk maintenance so the next failure is less likely to land at 2 a.m.",
       },
     ],
   },

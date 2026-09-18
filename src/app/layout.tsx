@@ -10,6 +10,7 @@ import "./site.css";
 import "./footer.css";
 import "./values.css";
 import "./services.css";
+import "./locations.css";
 
 const inter = Inter({
   subsets: ["latin"],

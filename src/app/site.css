@@ -160,7 +160,8 @@ h2,.subpage-inner > h1{font-family:var(--f);font-size:clamp(24px,3vw,38px);font-
 .area-copy{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
 .area-copy p{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300}
 .area-list{display:grid;grid-template-columns:1fr 1fr;gap:0px;background:var(--line);border:1px solid var(--line)}
-.area-item{display:flex;align-items:center;gap:12px;padding:14px 18px;font-size:13px;font-weight:400;color:rgba(255,255,255,.75);border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:background .2s,color .2s}
+.area-item{display:flex;align-items:center;gap:12px;padding:14px 18px;font-size:13px;font-weight:400;color:rgba(255,255,255,.75);border-bottom:1px solid var(--line);border-right:1px solid var(--line);transition:background .2s,color .2s;text-decoration:none}
+a.area-item{cursor:pointer}
 .area-item:hover{background:var(--bg3);color:var(--white)}
 .area-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 

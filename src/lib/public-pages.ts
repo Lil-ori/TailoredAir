@@ -1,3 +1,4 @@
+import { locations } from "@/lib/locations";
 import { services } from "@/lib/services";
 
 export type PublicPage = {
@@ -11,11 +12,16 @@ export const publicPages: PublicPage[] = [
   ...services.map((service) => ({
     path: `/services/${service.slug}`,
     changeFrequency: "monthly" as const,
-    priority: 0.9,
+    priority: service.slug === "emergency" ? 1 : 0.9,
+  })),
+  ...locations.map((location) => ({
+    path: `/locations/${location.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: location.priority,
   })),
   { path: "/about", changeFrequency: "monthly", priority: 0.8 },
   { path: "/why-choose-us", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/faq", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/faq", changeFrequency: "monthly", priority: 0.9 },
   { path: "/values", changeFrequency: "monthly", priority: 0.7 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
   { path: "/careers", changeFrequency: "monthly", priority: 0.5 },

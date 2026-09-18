@@ -1,7 +1,8 @@
 import { HomeEnhancements } from "@/components/home-enhancements";
 import { HtmlBlock } from "@/components/html-block";
+import { JsonLd } from "@/components/json-ld";
 import { readPageHtml } from "@/lib/html";
-import { pageMetadata } from "@/lib/seo";
+import { homeFaqJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata = {
   ...pageMetadata({
@@ -19,6 +20,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
+      <JsonLd data={homeFaqJsonLd()} />
       <HtmlBlock html={readPageHtml("home.html")} />
       <HomeEnhancements />
     </main>
