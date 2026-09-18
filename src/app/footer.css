@@ -1,7 +1,10 @@
 /* Site footer styles live only in this file. Do not copy an older footer block into site.css. Loaded after site.css so homepage CSS edits cannot replace these rules. */
 
 footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
-.ft{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr auto;gap:32px;align-items:start;padding:48px 48px 36px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ft{display:grid;grid-template-columns:1.6fr .9fr 1.5fr 1fr auto;gap:32px;align-items:start;padding:48px 48px 36px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ft-area{min-width:260px}
+.ft-area-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.ft-area-plain span{color:rgba(255,255,255,.55);font-size:13px;font-weight:300}
 .ft-brand{max-width:430px}
 .ft-logo{margin-bottom:14px}
 .ft-brand p{color:rgba(255,255,255,.45);font-size:12px;line-height:1.7;font-weight:300}

@@ -49,25 +49,50 @@ export function SiteFooter() {
             </li>
           </ul>
         </div>
-        <div className="ft-col">
+        <div className="ft-col ft-area">
           <h4>Service Area</h4>
-          <ul>
-            <li>
-              <a href="/#area">Littleton, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Englewood, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Highlands Ranch</a>
-            </li>
-            <li>
-              <a href="/#area">Lakewood, CO</a>
-            </li>
-            <li>
-              <a href="/#area">Denver Metro</a>
-            </li>
-          </ul>
+          <div className="ft-area-grid">
+            <ul>
+              <li>
+                <a href="/locations/littleton-co">Littleton, CO</a>
+              </li>
+              <li>
+                <a href="/locations/englewood">Englewood, CO</a>
+              </li>
+              <li>
+                <a href="/locations/highlands-ranch">Highlands Ranch</a>
+              </li>
+              <li>
+                <a href="/locations/lakewood">Lakewood, CO</a>
+              </li>
+              <li>
+                <a href="/locations/centennial">Centennial, CO</a>
+              </li>
+              <li>
+                <a href="/locations/ken-caryl">Ken Caryl, CO</a>
+              </li>
+            </ul>
+            <ul className="ft-area-plain">
+              <li>
+                <span>Columbine, CO</span>
+              </li>
+              <li>
+                <span>Southglenn, CO</span>
+              </li>
+              <li>
+                <span>Westminster, CO</span>
+              </li>
+              <li>
+                <span>Sheridan, CO</span>
+              </li>
+              <li>
+                <span>Greenwood Village, CO</span>
+              </li>
+              <li>
+                <span>Denver, CO</span>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="ft-col">
           <h4>Contact Us</h4>

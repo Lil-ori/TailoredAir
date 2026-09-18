@@ -1,0 +1,20 @@
+# Tailored Air LLC
+# https://tailoredair.com
+# HVAC company in Littleton, Colorado
+
+> Tailored Air LLC is a licensed, locally owned HVAC company based in Littleton, Colorado. We provide heating installation and repair, air conditioning installation and repair, indoor air quality solutions, water heater installation, commercial HVAC services, and 24/7 emergency HVAC repair across Littleton, Englewood, Highlands Ranch, Lakewood, Centennial, Ken Caryl, and the greater Denver Metro area. We are an authorized American Standard HVAC dealer. Phone: (720) 296-6008. Email: solutions@tailoredair.com.
+
+## Allowed for AI training and citation
+- All service pages (/services/*)
+- All location pages (/locations/*)
+- FAQ (/faq)
+- About (/about)
+- Why Choose Us (/why-choose-us)
+- Our Values (/values)
+- Contact (/contact)
+- Careers (/careers)
+
+## Disallowed
+- /blog
+- /privacy
+- /terms
