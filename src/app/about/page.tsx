@@ -1,7 +1,8 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { HtmlBlock } from "@/components/html-block";
+import { JsonLd } from "@/components/json-ld";
 import { readPageHtml } from "@/lib/html";
-import { pageMetadata } from "@/lib/seo";
+import { aboutJsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "About Us | Littleton HVAC Company",
@@ -14,6 +15,7 @@ export const metadata = pageMetadata({
 export default function AboutPage() {
   return (
     <main className="inner-page">
+      <JsonLd data={aboutJsonLd()} />
       <Breadcrumbs items={[{ name: "About Us", path: "/about" }]} />
       <HtmlBlock html={readPageHtml("about-us-content.html")} />
     </main>

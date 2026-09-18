@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ServicePage } from "@/lib/services";
 
 function PhoneLink({ className }: { className?: string }) {
@@ -18,8 +19,8 @@ export function ServicePageContent({ service }: { service: ServicePage }) {
       {isEmergency ? (
         <div className="service-emergency">
           <p className="service-emergency-serve">
-            Serving Littleton, CO, Highlands Ranch, Englewood, Lakewood, Centennial, and Ken Caryl
-            24/7
+            Serving Littleton, CO, Highlands Ranch, CO, Englewood, CO, Lakewood, CO, Centennial, CO,
+            and Ken Caryl, CO 24/7
           </p>
           <PhoneLink className="service-emergency-phone" />
         </div>
@@ -76,9 +77,9 @@ export function ServicePageContent({ service }: { service: ServicePage }) {
         {isEmergency ? (
           <div className="service-emergency-actions">
             <PhoneLink className="btn-dk" />
-            <a className="btn-w" href="/contact">
+            <Link className="btn-w" href="/contact">
               Get a Free Estimate
-            </a>
+            </Link>
           </div>
         ) : (
           <a className="btn-w" href="#" data-action="estimate" style={{ flexShrink: 0 }}>

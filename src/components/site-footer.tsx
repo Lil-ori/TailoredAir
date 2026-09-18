@@ -39,29 +39,50 @@ export function SiteFooter() {
             </li>
           </ul>
         </div>
-        <div className="ft-col">
+        <div className="ft-col ft-area">
           <h4>Service Area</h4>
-          <ul>
-            <li>
-              <Link href="/locations/littleton-co">Littleton, CO</Link>
-            </li>
-            <li>
-              <Link href="/locations/englewood">Englewood, CO</Link>
-            </li>
-            <li>
-              <Link href="/locations/highlands-ranch">Highlands Ranch</Link>
-            </li>
-            <li>
-              <Link href="/locations/lakewood">Lakewood, CO</Link>
-            </li>
-            <li>
-              <Link href="/locations/centennial">Centennial, CO</Link>
-            </li>
-            <li>
-              <Link href="/locations/ken-caryl">Ken Caryl, CO</Link>
-            </li>
-            <li>Denver Metro</li>
-          </ul>
+          <div className="ft-area-grid">
+            <ul>
+              <li>
+                <Link href="/locations/littleton-co">Littleton, CO</Link>
+              </li>
+              <li>
+                <Link href="/locations/englewood">Englewood, CO</Link>
+              </li>
+              <li>
+                <Link href="/locations/highlands-ranch">Highlands Ranch</Link>
+              </li>
+              <li>
+                <Link href="/locations/lakewood">Lakewood, CO</Link>
+              </li>
+              <li>
+                <Link href="/locations/centennial">Centennial, CO</Link>
+              </li>
+              <li>
+                <Link href="/locations/ken-caryl">Ken Caryl, CO</Link>
+              </li>
+            </ul>
+            <ul className="ft-area-plain">
+              <li>
+                <span>Columbine, CO</span>
+              </li>
+              <li>
+                <span>Southglenn, CO</span>
+              </li>
+              <li>
+                <span>Westminster, CO</span>
+              </li>
+              <li>
+                <span>Sheridan, CO</span>
+              </li>
+              <li>
+                <span>Greenwood Village, CO</span>
+              </li>
+              <li>
+                <span>Denver, CO</span>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="ft-col">
           <h4>Contact Us</h4>

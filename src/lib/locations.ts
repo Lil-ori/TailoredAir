@@ -138,32 +138,32 @@ export const LOCATION_SERVICE_CARDS = [
   {
     slug: "heating",
     title: "Heating Installation & Repair",
-    blurb: "Furnaces, boilers, heat pumps, and seasonal maintenance for Colorado winters.",
+    blurb: "Furnaces, heat pumps, boilers, and seasonal tune-ups",
   },
   {
     slug: "cooling",
     title: "Air Conditioning Installation & Repair",
-    blurb: "Central AC, ductless mini-splits, and smart thermostat upgrades.",
+    blurb: "Central AC, ductless mini-splits, and smart thermostats",
   },
   {
     slug: "air-quality",
     title: "Indoor Air Quality",
-    blurb: "Purifiers, humidifiers, UV lamps, and CO detectors for healthy indoor air.",
+    blurb: "Air purifiers, humidifiers, UV lamps, and CO detectors",
   },
   {
     slug: "water-heaters",
     title: "Water Heater Services",
-    blurb: "Traditional and tankless installation, repair, and maintenance.",
+    blurb: "Traditional and tankless installation, repair, and maintenance",
   },
   {
     slug: "commercial",
     title: "Commercial HVAC",
-    blurb: "Design, installation, upgrades, and maintenance for all property types.",
+    blurb: "Design, installation, and maintenance for all property types",
   },
   {
     slug: "emergency",
     title: "24/7 Emergency Repair",
-    blurb: "24/7 emergency repair. When comfort can't wait, we're there fast.",
+    blurb: "Around-the-clock response for heating and cooling emergencies",
   },
 ] as const;
 

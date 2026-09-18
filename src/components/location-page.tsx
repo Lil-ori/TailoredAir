@@ -1,9 +1,8 @@
+import Link from "next/link";
 import { LOCATION_SERVICE_CARDS, type LocationPage } from "@/lib/locations";
-import { getService } from "@/lib/services";
 
 export function LocationPageContent({ location }: { location: LocationPage }) {
   const city = location.city;
-  const basedHere = city === "Littleton";
 
   return (
     <div className="subpage-inner">
@@ -16,29 +15,19 @@ export function LocationPageContent({ location }: { location: LocationPage }) {
 
       <div className="location-svc">
         <p className="eyebrow">What We Do</p>
-        <h2>Our HVAC Services</h2>
-        <div className="svc-grid" style={{ marginTop: 32 }}>
-          {LOCATION_SERVICE_CARDS.map((card, index) => {
-            const service = getService(card.slug);
-            if (!service) return null;
-            return (
-              <a className="svc" href={`/services/${card.slug}`} key={card.slug}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  className="svc-img"
-                  src={service.image}
-                  alt={service.imageAlt}
-                  loading="lazy"
-                />
-                <div className="svc-body">
-                  <div className="svc-n">{String(index + 1).padStart(2, "0")}</div>
-                  <h3>{card.title}</h3>
-                  <p>{card.blurb}</p>
-                </div>
-                <span className="svc-arr">↗</span>
-              </a>
-            );
-          })}
+        <h2>HVAC Services in {city}, CO</h2>
+        <div className="location-svc-list">
+          {LOCATION_SERVICE_CARDS.map((card) => (
+            <Link className="location-svc-item" href={`/services/${card.slug}`} key={card.slug}>
+              <span className="location-svc-check" aria-hidden="true">
+                ✓
+              </span>
+              <span className="location-svc-copy">
+                <span className="location-svc-name">{card.title}</span>
+                <span className="location-svc-blurb">{card.blurb}</span>
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
 
@@ -54,20 +43,20 @@ export function LocationPageContent({ location }: { location: LocationPage }) {
             <span>Google Rating</span>
           </div>
           <div className="stat">
-            <b>CO</b>
-            <span>Licensed &amp; Insured</span>
+            <b>Licensed</b>
+            <span>&amp; Insured in Colorado</span>
           </div>
           <div className="stat">
-            <b>AS</b>
-            <span>Authorized American Standard dealer</span>
+            <b>American Standard</b>
+            <span>Authorized Dealer</span>
           </div>
           <div className="stat">
-            <b>{basedHere ? "HQ" : "Near"}</b>
-            <span>
-              {basedHere
-                ? `Based in Littleton, CO ${location.zip}`
-                : "Minutes from Littleton, CO"}
-            </span>
+            <b>Local</b>
+            <span>Based in Littleton, CO</span>
+          </div>
+          <div className="stat">
+            <b>Free</b>
+            <span>No-Obligation Estimates</span>
           </div>
         </div>
       </div>
@@ -86,9 +75,9 @@ export function LocationPageContent({ location }: { location: LocationPage }) {
           <a className="btn-dk" href="tel:7202966008">
             (720) 296-6008
           </a>
-          <a className="btn-w" href="/contact">
+          <Link className="btn-w" href="/contact">
             Get a Free Estimate
-          </a>
+          </Link>
         </div>
       </div>
     </div>

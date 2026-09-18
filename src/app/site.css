@@ -290,6 +290,9 @@ a.area-item{cursor:pointer}
 
 /* FAQ */
 .faq{background:var(--bg)}
+.faq-direct{color:var(--dim);font-size:15px;line-height:1.8;font-weight:300;margin:12px 0 0;max-width:760px}
+.faq-direct a{color:var(--white);text-decoration:none;font-weight:500}
+.faq-direct a:hover{color:var(--green)}
 .faq-list{margin-top:40px;display:flex;flex-direction:column}
 .faq-item{border-top:1px solid var(--line)}
 .faq-item:last-child{border-bottom:1px solid var(--line)}
