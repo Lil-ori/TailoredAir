@@ -49,7 +49,7 @@ export function SiteFooter() {
               <Link href="/locations/englewood">Englewood, CO</Link>
             </li>
             <li>
-              <Link href="/locations/highlands-ranch">Highlands Ranch, CO</Link>
+              <Link href="/locations/highlands-ranch">Highlands Ranch</Link>
             </li>
             <li>
               <Link href="/locations/lakewood">Lakewood, CO</Link>
@@ -60,6 +60,7 @@ export function SiteFooter() {
             <li>
               <Link href="/locations/ken-caryl">Ken Caryl, CO</Link>
             </li>
+            <li>Denver Metro</li>
           </ul>
         </div>
         <div className="ft-col">
