@@ -5,6 +5,7 @@ export function ServicePageContent({ service }: { service: ServicePage }) {
     <div className="subpage-inner">
       <p className="eyebrow">HVAC Services</p>
       <h1>{service.title}</h1>
+      <p className="service-lede">{service.intro}</p>
       <div className="service-layout-frame">
         <div className="service-layout">
           <div className="service-layout-photo">
@@ -12,9 +13,6 @@ export function ServicePageContent({ service }: { service: ServicePage }) {
             <img src={service.image} alt={service.imageAlt} />
           </div>
           <div className="service-layout-list">
-            <div className="service-layout-item service-layout-intro">
-              <p>{service.intro}</p>
-            </div>
             {service.points.map((point) => (
               <div className="service-layout-item" key={point.title}>
                 <div className="values-suit-top">
