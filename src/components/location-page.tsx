@@ -7,7 +7,7 @@ export function LocationPageContent({ location }: { location: LocationPage }) {
   return (
     <div className="subpage-inner">
       <p className="eyebrow">HVAC Services, {city}, CO</p>
-      <h1>HVAC Services in {city}, CO</h1>
+      <h1>{`HVAC Services in ${city}, CO`}</h1>
       <p className="location-intro">{location.intro}</p>
       <p className="location-intro-extra">{location.extra}</p>
 
