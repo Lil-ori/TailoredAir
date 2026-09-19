@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
 
+// Always generate at request time. A cached empty or homepage-only
+// sitemap would otherwise keep serving after this file was updated.
+export const dynamic = "force-dynamic";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://tailoredair.com";
   const now = new Date();
