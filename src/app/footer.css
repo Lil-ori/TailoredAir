@@ -1,7 +1,7 @@
 /* Site footer styles live only in this file. Do not copy an older footer block into site.css. Loaded after site.css so homepage CSS edits cannot replace these rules. */
 
 footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
-.ft{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr auto;gap:32px;align-items:start;padding:48px 48px 36px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ft{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1.1fr;gap:40px;align-items:start;padding:48px 48px 36px;border-bottom:1px solid rgba(255,255,255,.07)}
 .ft-brand{max-width:430px}
 .ft-logo{margin-bottom:14px}
 .ft-brand p{color:rgba(255,255,255,.45);font-size:12px;line-height:1.7;font-weight:300}
@@ -21,18 +21,17 @@ footer{background:#0c0c0c;border-top:1px solid rgba(255,255,255,.07)}
 .ft-bot-copy{justify-self:start;text-align:left}
 .ft-bot-credit{justify-self:center;display:flex;align-items:center;gap:8px}
 .ft-bot-credit span{font-size:9px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;line-height:1}
-.ft-bot-legal{justify-self:end;display:flex;align-items:center;justify-content:flex-end;gap:12px;text-align:right}
+.ft-bot-end{justify-self:end;display:flex;align-items:center;justify-content:flex-end;gap:20px}
+.ft-bot-legal{display:flex;align-items:center;justify-content:flex-end;gap:12px;text-align:right}
 .ft-bot .legal-link{margin-left:0;font-size:11px;letter-spacing:.04em}
+.ft-bot-badge{width:132px;height:auto;display:block;flex-shrink:0}
 .ft-badge{background:var(--green);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px}
 
-@media (max-width: 900px) {
-  .ft{grid-template-columns:1fr 1fr;gap:32px}
+@media (max-width: 768px) {
+  .ft{grid-template-columns:1fr 1fr;gap:32px;padding:40px 16px 28px}
   .ft-brand{grid-column:1/-1}
-}
-
-@media (max-width: 600px) {
-  .ft{grid-template-columns:1fr;padding:40px 16px 28px}
-  .ft-brand{grid-column:auto}
-  .ft-bot{grid-template-columns:1fr;justify-items:center;text-align:center;gap:8px;padding:14px 16px}
-  .ft-bot-copy,.ft-bot-legal{justify-self:center;text-align:center}
+  .ft-bot{grid-template-columns:1fr;justify-items:center;text-align:center;gap:10px;padding:14px 16px}
+  .ft-bot-copy,.ft-bot-end{justify-self:center;text-align:center}
+  .ft-bot-end{flex-direction:column;gap:10px}
+  .ft-bot-legal{justify-content:center;text-align:center}
 }

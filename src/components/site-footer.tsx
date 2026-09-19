@@ -21,33 +21,66 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="ft-col">
-          <h4>Quick Links</h4>
+          <h4>Services</h4>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a href="/services/heating">Heating</a>
             </li>
             <li>
-              <a href="/#svc">HVAC Services</a>
+              <a href="/services/cooling">Cooling</a>
             </li>
             <li>
-              <a href="/about">About Us</a>
+              <a href="/services/air-quality">Air Quality</a>
             </li>
             <li>
-              <a href="/blog">Blog</a>
+              <a href="/services/water-heaters">Water Heaters</a>
             </li>
             <li>
-              <a href="/contact">Contact</a>
+              <a href="/services/commercial">Commercial</a>
+            </li>
+            <li>
+              <a href="/services/emergency">Emergency</a>
             </li>
           </ul>
         </div>
         <div className="ft-col">
           <h4>Service Area</h4>
           <ul>
-            <li>Littleton, CO</li>
-            <li>Englewood, CO</li>
-            <li>Highlands Ranch</li>
-            <li>Lakewood, CO</li>
-            <li>Denver Metro</li>
+            <li>
+              <a href="/#area">Littleton, CO</a>
+            </li>
+            <li>
+              <a href="/#area">Englewood, CO</a>
+            </li>
+            <li>
+              <a href="/#area">Highlands Ranch</a>
+            </li>
+            <li>
+              <a href="/#area">Lakewood, CO</a>
+            </li>
+            <li>
+              <a href="/#area">Centennial, CO</a>
+            </li>
+            <li>
+              <a href="/#area">Ken Caryl, CO</a>
+            </li>
+          </ul>
+        </div>
+        <div className="ft-col">
+          <h4>Company</h4>
+          <ul>
+            <li>
+              <a href="/about">About Us</a>
+            </li>
+            <li>
+              <a href="/why-choose-us">Why Choose Us</a>
+            </li>
+            <li>
+              <a href="/faq">FAQ</a>
+            </li>
+            <li>
+              <a href="/careers">Careers</a>
+            </li>
           </ul>
         </div>
         <div className="ft-col">
@@ -92,13 +125,6 @@ export function SiteFooter() {
             </li>
           </ul>
         </div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <img
-            src="/images/asset-10-45ea3094a9a8ffa3.svg"
-            alt="Proudly Serving American Standard Products"
-            style={{ width: 200, height: "auto", display: "block" }}
-          />
-        </div>
       </div>
       <div className="ft-bot">
         <span className="ft-bot-copy">© 2026 Tailored Air LLC. All rights reserved.</span>
@@ -110,14 +136,21 @@ export function SiteFooter() {
             style={{ width: 42, height: "auto", display: "block", opacity: 0.7, marginBottom: 2 }}
           />
         </div>
-        <span className="ft-bot-legal">
-          <a href="/privacy" className="legal-link">
-            Privacy Policy
-          </a>
-          <a href="/terms" className="legal-link">
-            Terms &amp; Conditions
-          </a>
-        </span>
+        <div className="ft-bot-end">
+          <span className="ft-bot-legal">
+            <a href="/privacy" className="legal-link">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="legal-link">
+              Terms &amp; Conditions
+            </a>
+          </span>
+          <img
+            className="ft-bot-badge"
+            src="/images/asset-10-45ea3094a9a8ffa3.svg"
+            alt="Proudly Serving American Standard Products"
+          />
+        </div>
       </div>
     </footer>
   );
