@@ -35,7 +35,7 @@ export const locations: LocationPage[] = [
     extra:
       "Our technicians live in and around Littleton, which means we know the older homes near downtown as well as newer builds at the edge of town, and we size equipment for how this community actually lives.",
     localCopy:
-      "Tailored Air is your local HVAC neighbor, based right here in Littleton. We know Jefferson County weather, we are licensed and insured in Colorado, and we are an authorized American Standard dealer. Homeowners choose us for honest pricing, a 5-star Google rating, and work we would stand behind in our own houses. We also serve nearby Englewood, Highlands Ranch, Ken Caryl, and Lakewood.",
+      "Tailored Air is your local HVAC neighbor in Littleton. We are licensed and insured in Colorado, an authorized American Standard dealer, and a 5-star team. We also serve Englewood, Highlands Ranch, Ken Caryl, and Lakewood.",
     priority: 0.9,
   },
   {
@@ -54,7 +54,7 @@ export const locations: LocationPage[] = [
     extra:
       "From Backcountry to the Town Center, Highlands Ranch homes take a beating from dry winters and hot afternoons. We install, repair, and maintain systems that keep this community comfortable without the upsell.",
     localCopy:
-      "When Highlands Ranch families need heat or AC, we are just minutes away in Littleton. Highlands Ranch homeowners get a neighbor, not a call center. We know Douglas County, we are licensed and insured in Colorado, and we are an authorized American Standard dealer with a 5-star rating and honest pricing. We also serve Littleton, Centennial, Parker, and Lone Tree.",
+      "Highlands Ranch families are minutes from our Littleton shop. We are licensed and insured in Colorado, an authorized American Standard dealer, and a 5-star team. We also serve Littleton, Centennial, Parker, and Lone Tree.",
     priority: 0.8,
   },
   {
@@ -92,7 +92,7 @@ export const locations: LocationPage[] = [
     extra:
       "Lakewood stretches from Belmar to the foothills, and those elevation and housing differences matter when a system is sized or repaired. Our team shows up ready for the house in front of us, not a one-size quote.",
     localCopy:
-      "Lakewood homeowners work with a Jefferson County neighbor based in Littleton, licensed and insured in Colorado, and an authorized American Standard dealer. Honest pricing and a 5-star Google rating are the baseline, not a slogan. We also serve Littleton, Wheat Ridge, Morrison, and Denver, so Lakewood is never the edge of our map.",
+      "Lakewood homeowners work with a Jefferson County neighbor based in Littleton. We are licensed and insured in Colorado and an authorized American Standard dealer. We also serve Wheat Ridge, Morrison, and Denver.",
     priority: 0.7,
   },
   {
@@ -111,7 +111,7 @@ export const locations: LocationPage[] = [
     extra:
       "Centennial summers run hot and winters still get cold enough to punish a neglected furnace. We keep Centennial homes comfortable year-round with maintenance, repairs, and replacements explained in plain language.",
     localCopy:
-      "Centennial families get the same no-pressure approach we use in Littleton. We are licensed and insured in Colorado, an authorized American Standard dealer, and a 5-star team that would rather fix what is fair than sell what is convenient. We also serve Highlands Ranch, Greenwood Village, Parker, and Lone Tree, so Centennial sits in the middle of our service area, not the far edge.",
+      "Centennial families get the same no-pressure approach we use in Littleton. We are licensed and insured in Colorado and an authorized American Standard dealer. We also serve Highlands Ranch, Greenwood Village, Parker, and Lone Tree.",
     priority: 0.7,
   },
   {
