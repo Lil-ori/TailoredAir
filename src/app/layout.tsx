@@ -23,11 +23,11 @@ const site = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(site),
   title: {
-    default: "Tailored Air | Littleton HVAC Experts | Heating, Cooling & Air Quality",
+    default: "Tailored Air | HVAC Services in Littleton, CO",
     template: "%s | Tailored Air",
   },
   description:
-    "Tailored Air provides expert HVAC installation, repair & maintenance in Littleton, CO and the Denver Metro area. American Standard partner. 24/7 emergency service. Call (720) 296-6008.",
+    "Tailored Air provides expert HVAC installation, repair, and 24/7 emergency service in Littleton, CO and the Denver Metro area. Call (720) 296-6008 today.",
   keywords: [
     "HVAC Littleton CO",
     "heating and cooling Littleton",

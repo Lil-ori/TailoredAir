@@ -1,6 +1,8 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { HtmlBlock } from "@/components/html-block";
+import { JsonLd } from "@/components/json-ld";
 import { readPageHtml } from "@/lib/html";
+import { privacyJsonLd } from "@/lib/page-faq";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -13,6 +15,7 @@ export const metadata = pageMetadata({
 export default function PrivacyPage() {
   return (
     <main className="inner-page">
+      <JsonLd data={privacyJsonLd()} />
       <Breadcrumbs items={[{ name: "Privacy Policy", path: "/privacy" }]} />
       <HtmlBlock html={readPageHtml("privacy.html")} />
     </main>

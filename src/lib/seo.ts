@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { services } from "@/lib/services";
-import { CONTACT_EMAIL, getSiteUrl } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site";
 
 export const SITE_NAME = "Tailored Air";
 export const DEFAULT_OG_IMAGE = "/images/og.jpg";
@@ -123,12 +123,13 @@ export function businessJsonLd() {
         logo: `${site}/images/logo.png`,
         image: `${site}/images/og.jpg`,
         telephone: "+17202966008",
-        email: CONTACT_EMAIL,
+        email: "hello@tailoredair.com",
         priceRange: "$$",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Littleton",
           addressRegion: "CO",
+          postalCode: "80120",
           addressCountry: "US",
         },
         areaServed: SERVICE_AREAS.map((name) => ({

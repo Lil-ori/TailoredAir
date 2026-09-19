@@ -1,5 +1,6 @@
 import { JsonLd } from "@/components/json-ld";
 import { ServicePageContent } from "@/components/service-page";
+import { serviceFaqJsonLd, withFaqGraph } from "@/lib/page-faq";
 import { getService, services } from "@/lib/services";
 import { pageMetadata, serviceJsonLd } from "@/lib/seo";
 import { notFound } from "next/navigation";
@@ -28,7 +29,13 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
 
   return (
     <main className="inner-page">
-      <JsonLd data={serviceJsonLd(service)} />
+      <JsonLd
+        data={
+          serviceFaqJsonLd[service.slug]
+            ? withFaqGraph(serviceJsonLd(service), serviceFaqJsonLd[service.slug])
+            : serviceJsonLd(service)
+        }
+      />
       <ServicePageContent service={service} />
     </main>
   );

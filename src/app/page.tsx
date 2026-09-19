@@ -1,24 +1,30 @@
 import { HomeEnhancements } from "@/components/home-enhancements";
 import { HtmlBlock } from "@/components/html-block";
+import { JsonLd } from "@/components/json-ld";
 import { readPageHtml } from "@/lib/html";
+import { homeFaqJsonLd } from "@/lib/page-faq";
 import { pageMetadata } from "@/lib/seo";
+
+const HOME_TITLE = "Tailored Air | HVAC Services in Littleton, CO";
+const HOME_DESCRIPTION =
+  "Tailored Air provides expert HVAC installation, repair, and 24/7 emergency service in Littleton, CO and the Denver Metro area. Call (720) 296-6008 today.";
 
 export const metadata = {
   ...pageMetadata({
-    title: "Littleton HVAC Experts | Heating, Cooling & Air Quality",
-    description:
-      "Tailored Air provides expert HVAC installation, repair & maintenance in Littleton, CO and the Denver Metro area. American Standard partner. 24/7 emergency service. Call (720) 296-6008.",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     path: "/",
-    ogTitle: "Tailored Air | Littleton HVAC Experts",
+    ogTitle: HOME_TITLE,
   }),
   title: {
-    absolute: "Tailored Air | Littleton HVAC Experts | Heating, Cooling & Air Quality",
+    absolute: HOME_TITLE,
   },
 };
 
 export default function Home() {
   return (
     <main>
+      <JsonLd data={{ "@context": "https://schema.org", ...homeFaqJsonLd() }} />
       <HtmlBlock html={readPageHtml("home.html")} />
       <HomeEnhancements />
     </main>

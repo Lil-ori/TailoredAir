@@ -1,5 +1,7 @@
 import { HtmlBlock } from "@/components/html-block";
+import { JsonLd } from "@/components/json-ld";
 import { readPageHtml } from "@/lib/html";
+import { careersFaqJsonLd } from "@/lib/page-faq";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -13,6 +15,7 @@ export const metadata = pageMetadata({
 export default function CareersPage() {
   return (
     <main className="inner-page">
+      <JsonLd data={{ "@context": "https://schema.org", ...careersFaqJsonLd() }} />
       <HtmlBlock html={readPageHtml("careers-content.html")} />
     </main>
   );

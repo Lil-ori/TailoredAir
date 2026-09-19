@@ -1,4 +1,5 @@
-import { CONTACT_EMAIL, getSiteUrl } from "@/lib/site";
+import { locationFaqJsonLd, withFaqGraph } from "@/lib/page-faq";
+import { PUBLIC_EMAIL, getSiteUrl } from "@/lib/site";
 
 export type LocationPage = {
   slug: string;
@@ -27,10 +28,10 @@ export const locations: LocationPage[] = [
     lng: -105.0166,
     county: "Jefferson County",
     neighbors: "Englewood, Highlands Ranch, Ken Caryl, and Lakewood",
-    title: "HVAC Services in Littleton, CO | Tailored Air, Local HVAC Experts",
-    meta: "Tailored Air is Littleton's trusted local HVAC company. Expert heating, cooling, water heaters, and 24/7 emergency repair. Call (720) 296-6008 for a free estimate.",
+    title: "HVAC Services in Littleton, CO | Tailored Air",
+    meta: "Tailored Air is Littleton's local HVAC company. Expert heating, cooling, water heaters, and 24/7 emergency repair. Call (720) 296-6008 for a free estimate.",
     intro:
-      "Tailored Air is proud to be Littleton's local HVAC company. We are based right here in Littleton, CO, and we serve homeowners and businesses throughout the community with honest, high-quality heating and cooling services. From furnace installation to 24/7 emergency repair, our team knows Littleton and treats every home we enter like our own.",
+      "Tailored Air is Littleton, Colorado's local HVAC company. We provide heating installation and repair, air conditioning service, indoor air quality solutions, water heaters, commercial HVAC, and 24/7 emergency repair throughout Littleton and Jefferson County. Call (720) 296-6008 for a free estimate.",
     extra:
       "Our technicians live in and around Littleton, which means we know the older homes near downtown as well as newer builds at the edge of town, and we size equipment for how this community actually lives.",
     localCopy:
@@ -49,7 +50,7 @@ export const locations: LocationPage[] = [
     title: "HVAC Services in Highlands Ranch, CO | Tailored Air",
     meta: "Expert HVAC installation and repair in Highlands Ranch, CO. Heating, cooling, and 24/7 emergency service. Call Tailored Air at (720) 296-6008.",
     intro:
-      "Tailored Air provides expert HVAC services to homeowners and businesses throughout Highlands Ranch, CO. Based just minutes away in Littleton, our team knows the area and responds fast when Highlands Ranch families need heating or cooling help, whether it is a seasonal tune-up or a middle-of-the-night emergency.",
+      "Tailored Air provides HVAC installation, repair, and maintenance throughout Highlands Ranch, Colorado. Based just minutes away in Littleton, we serve Highlands Ranch homeowners with heating, cooling, water heater, and 24/7 emergency services. Call (720) 296-6008 for a free estimate.",
     extra:
       "From Backcountry to the Town Center, Highlands Ranch homes take a beating from dry winters and hot afternoons. We install, repair, and maintain systems that keep this community comfortable without the upsell.",
     localCopy:
@@ -87,7 +88,7 @@ export const locations: LocationPage[] = [
     title: "HVAC Services in Lakewood, CO | Tailored Air",
     meta: "Professional HVAC services in Lakewood, CO. Heating, cooling, and emergency HVAC repair across Lakewood and Jefferson County. Call (720) 296-6008.",
     intro:
-      "Tailored Air provides professional HVAC installation, repair, and maintenance for homes and businesses across Lakewood, CO. We are a Jefferson County company based in Littleton, and we treat every Lakewood customer with the same straightforward, honest service that has earned us a 5-star reputation.",
+      "Tailored Air serves Lakewood, Colorado with expert HVAC installation, repair, and maintenance. As a Jefferson County company based in nearby Littleton, we provide Lakewood homeowners with heating, cooling, and emergency HVAC services. Call (720) 296-6008 for a free estimate.",
     extra:
       "Lakewood stretches from Belmar to the foothills, and those elevation and housing differences matter when a system is sized or repaired. Our team shows up ready for the house in front of us, not a one-size quote.",
     localCopy:
@@ -106,7 +107,7 @@ export const locations: LocationPage[] = [
     title: "HVAC Services in Centennial, CO | Tailored Air",
     meta: "Expert HVAC installation and repair in Centennial, CO. Serving Centennial and the South Denver Metro. Call Tailored Air at (720) 296-6008.",
     intro:
-      "Tailored Air serves Centennial, CO homeowners and businesses with expert heating, cooling, and emergency HVAC repair. Our team is based in Littleton and provides fast, reliable service throughout Centennial and the South Denver Metro area, with honest pricing and no upselling.",
+      "Tailored Air provides HVAC services throughout Centennial, Colorado and the South Denver Metro area. Our Littleton-based team handles heating installation, air conditioning repair, water heaters, and 24/7 emergency service for Centennial homes and businesses. Call (720) 296-6008.",
     extra:
       "Centennial summers run hot and winters still get cold enough to punish a neglected furnace. We keep Centennial homes comfortable year-round with maintenance, repairs, and replacements explained in plain language.",
     localCopy:
@@ -172,13 +173,14 @@ export function getLocation(slug: string) {
 }
 
 export function locationJsonLd(location: LocationPage) {
-  return {
+  return withFaqGraph(
+    {
     "@context": "https://schema.org",
     "@type": "HVACBusiness",
     name: `Tailored Air, ${location.city}, CO`,
     url: getSiteUrl(),
     telephone: "+17202966008",
-    email: CONTACT_EMAIL,
+    email: PUBLIC_EMAIL,
     address: {
       "@type": "PostalAddress",
       addressLocality: location.city,
@@ -199,5 +201,7 @@ export function locationJsonLd(location: LocationPage) {
       bestRating: "5",
       ratingCount: "47",
     },
-  };
+    },
+    locationFaqJsonLd(location.city),
+  );
 }

@@ -1,6 +1,8 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { HtmlBlock } from "@/components/html-block";
+import { JsonLd } from "@/components/json-ld";
 import { readPageHtml } from "@/lib/html";
+import { whyChooseUsFaqJsonLd } from "@/lib/page-faq";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -13,6 +15,7 @@ export const metadata = pageMetadata({
 export default function WhyChooseUsPage() {
   return (
     <main className="inner-page">
+      <JsonLd data={{ "@context": "https://schema.org", ...whyChooseUsFaqJsonLd() }} />
       <Breadcrumbs items={[{ name: "Why Choose Us", path: "/why-choose-us" }]} />
       <HtmlBlock html={readPageHtml("why-choose-content.html")} />
     </main>
